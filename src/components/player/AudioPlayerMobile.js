@@ -27,13 +27,14 @@ export default class Validator extends React.Component {
     }
 
     start = async () => {
-
+        await TrackPlayer.reset()
         await TrackPlayer.setupPlayer()
         await TrackPlayer.updateOptions({
-            stopWithApp: true,
+            
             capabilities: [
                 TrackPlayer.CAPABILITY_PLAY,
                 TrackPlayer.CAPABILITY_PAUSE,
+                TrackPlayer.CAPABILITY_STOP
             ],
             compactCapabilities: [
                 TrackPlayer.CAPABILITY_PLAY,
@@ -47,6 +48,7 @@ export default class Validator extends React.Component {
             title: 'CitrikaFM',
             artist: 'CitrikaFM',
             artwork: require('../../../assets/images/player_mobile_icon.jpg'),
+            duration: 1000000
         })
     }
 
@@ -54,7 +56,7 @@ export default class Validator extends React.Component {
         let state = await TrackPlayer.getState()
 
         if (state == TrackPlayer.STATE_PLAYING) {
-            await TrackPlayer.stop()
+            await TrackPlayer.pause()
             this.setState(() => ({ isPlaying: false }))
         } else {
             await TrackPlayer.play()
