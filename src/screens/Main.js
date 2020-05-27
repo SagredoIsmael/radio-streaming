@@ -10,12 +10,14 @@ import {
   StyleSheet,
   Text,
   TouchableHighlight,
-  View
+  View,
+  Button
 } from "react-native"
 import { Asset } from "expo-asset"
 import { Audio, Video } from "expo-av"
 import * as Font from "expo-font"
 import { MaterialIcons } from "@expo/vector-icons"
+import { CONTACT } from '../navigation/Navigator'
 
 class Icon {
   constructor(module, width, height) {
@@ -492,6 +494,10 @@ export default class Main extends React.Component {
             {this.state.playbackInstanceName}
           </Text>
         </View>
+        <Button
+      title="Go to Contact screen"
+      onPress={() => this.props.navigate(CONTACT)}
+    />
         <View style={styles.space} />
         <View style={styles.videoContainer}>
           <Video
