@@ -16,8 +16,7 @@ const Stack = createStackNavigator()
 export default () =>
     <Stack.Navigator screenOptions={headerCommonsOptions}>
         <Stack.Screen name={MAIN} component={MainScreen}
-            options={({ navigation }) => headerOptionsMain(navigation)}
-        />
+            options={({ navigation }) => headerOptionsMain(navigation)}/>
         <Stack.Screen name={EVENTS} component={EventsScreen} />
         <Stack.Screen name={DEEJAYS} component={DeejaysScreen} />
         <Stack.Screen name={CONTACT} component={ContactScreen} />
