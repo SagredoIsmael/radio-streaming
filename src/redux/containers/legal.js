@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import Login from '../../screens/Login'
-import { connectNavigation } from "../../redux/HOC/connectNavigation"
+import Legal from '../../screens/Legal'
+import { connectNavigation } from "../HOC/connectNavigation"
 
 
 const mapStateToProps = state => {
@@ -20,4 +20,4 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps
   )
-)(Login)
+)(Legal)

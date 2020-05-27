@@ -2,9 +2,9 @@ import * as React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { MAIN, PROFILE, CHAT } from './Navigator'
 import colors from '../constants/colors'
-import MainScreen from '../screens/Main'
+import MainScreen from '../screens/Events'
 import profileScreen from '../redux/containers/profile'
-import ChatScreen from '../screens/Chat'
+import ChatScreen from '../screens/Main'
 import { Ionicons } from '@expo/vector-icons'
 
 const BottomTab = createBottomTabNavigator()
