@@ -4,15 +4,11 @@ import {
   Slider,
   StyleSheet,
   Text,
-  TouchableHighlight,
+  TouchableWithoutFeedback,
   View,
-  Button
 } from "react-native"
 import { Audio, Video } from "expo-av"
-import * as Font from "expo-font"
-import { MaterialIcons } from "@expo/vector-icons"
 import { FontAwesome5 } from "@expo/vector-icons"
-import { CONTACT } from '../navigation/Navigator'
 import { Asset } from "expo-asset"
 
 class Icon {
@@ -60,7 +56,6 @@ const PLAYLIST = [
   )
 ]
 
-
 const ICON_PLAY_BUTTON = 'play'
 const ICON_PAUSE_BUTTON = 'pause'
 const ICON_STOP_BUTTON = 'stop'
@@ -68,7 +63,6 @@ const ICON_FORWARD_BUTTON = 'forward'
 const ICON_BACK_BUTTON = 'backward'
 const ICON_MUTED_BUTTON = 'volume-mute'
 const ICON_UNMUTED_BUTTON = 'volume-up'
-
 
 
 const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = Dimensions.get("window");
@@ -96,7 +90,6 @@ export default class Main extends React.Component {
       isPlaying: false,
       isBuffering: false,
       isLoading: true,
-      fontLoaded: false,
       shouldCorrectPitch: true,
       volume: 1.0,
       videoWidth: DEVICE_WIDTH,
@@ -111,14 +104,7 @@ export default class Main extends React.Component {
       playsInSilentModeIOS: true,
       shouldDuckAndroid: true,
       interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
-    });
-    (async () => {
-      await Font.loadAsync({
-        ...MaterialIcons.font,
-        "cutive-mono-regular": require("../../assets/fonts/SpaceMono-Regular.ttf")
-      });
-      this.setState({ fontLoaded: true });
-    })();
+    })
   }
 
   async _loadNewPlaybackInstance(playing) {
@@ -138,7 +124,6 @@ export default class Main extends React.Component {
     if (PLAYLIST[this.index].isVideo) {
       console.log(this._onPlaybackStatusUpdate);
       await this._video.loadAsync(source, initialStatus);
-      // this._video.onPlaybackStatusUpdate(this._onPlaybackStatusUpdate);
       this.playbackInstance = this._video;
       const status = await this._video.getStatusAsync();
     } else {
@@ -167,13 +152,13 @@ export default class Main extends React.Component {
         playbackInstanceDuration: null,
         playbackInstancePosition: null,
         isLoading: true
-      });
+      })
     } else {
       this.setState({
         playbackInstanceName: PLAYLIST[this.index].name,
         showVideo: PLAYLIST[this.index].isVideo,
         isLoading: false
-      });
+      })
     }
   }
 
@@ -188,7 +173,7 @@ export default class Main extends React.Component {
         muted: status.isMuted,
         volume: status.volume,
         shouldCorrectPitch: status.shouldCorrectPitch
-      });
+      })
       if (status.didJustFinish && !status.isLooping) {
         this._advanceIndex(true);
         this._updatePlaybackInstanceForIndex(true);
@@ -198,19 +183,8 @@ export default class Main extends React.Component {
         console.log(`FATAL PLAYER ERROR: ${status.error}`);
       }
     }
-  };
+  }
 
-  _onLoadStart = () => {
-    console.log(`ON LOAD START`);
-  };
-
-  _onLoad = status => {
-    console.log(`ON LOAD : ${JSON.stringify(status)}`);
-  };
-
-  _onError = error => {
-    console.log(`ON ERROR : ${error}`);
-  };
 
   _onReadyForDisplay = event => {
     const widestHeight =
@@ -255,27 +229,27 @@ export default class Main extends React.Component {
         this.playbackInstance.playAsync();
       }
     }
-  };
+  }
 
   _onStopPressed = () => {
     if (this.playbackInstance != null) {
       this.playbackInstance.stopAsync();
     }
-  };
+  }
 
   _onForwardPressed = () => {
     if (this.playbackInstance != null) {
       this._advanceIndex(true);
       this._updatePlaybackInstanceForIndex(this.state.shouldPlay);
     }
-  };
+  }
 
-  _onBackPressed = () => {
+  _onSeekSliderValueChange = () => {
     if (this.playbackInstance != null) {
       this._advanceIndex(false);
       this._updatePlaybackInstanceForIndex(this.state.shouldPlay);
     }
-  };
+  }
 
   _onMutePressed = () => {
     if (this.playbackInstance != null) {
@@ -283,7 +257,7 @@ export default class Main extends React.Component {
     }
   }
 
-  _onVolumeSliderValueChange = value => {
+  _onSeekSliderValueChange = value => {
     if (this.playbackInstance != null) {
       this.playbackInstance.setVolumeAsync(value);
     }
@@ -295,7 +269,7 @@ export default class Main extends React.Component {
       this.shouldPlayAtEndOfSeek = this.state.shouldPlay;
       this.playbackInstance.pauseAsync();
     }
-  };
+  }
 
   _onSeekSliderSlidingComplete = async value => {
     if (this.playbackInstance != null) {
@@ -307,7 +281,7 @@ export default class Main extends React.Component {
         this.playbackInstance.setPositionAsync(seekPosition);
       }
     }
-  };
+  }
 
   _getSeekSliderPosition() {
     if (
@@ -318,24 +292,24 @@ export default class Main extends React.Component {
       return (
         this.state.playbackInstancePosition /
         this.state.playbackInstanceDuration
-      );
+      )
     }
-    return 0;
+    return 0
   }
 
   _getMMSSFromMillis(millis) {
-    const totalSeconds = millis / 1000;
-    const seconds = Math.floor(totalSeconds % 60);
-    const minutes = Math.floor(totalSeconds / 60);
+    const totalSeconds = millis / 1000
+    const seconds = Math.floor(totalSeconds % 60)
+    const minutes = Math.floor(totalSeconds / 60)
 
     const padWithZero = number => {
-      const string = number.toString();
+      const string = number.toString()
       if (number < 10) {
-        return "0" + string;
+        return "0" + string
       }
       return string;
-    };
-    return padWithZero(minutes) + ":" + padWithZero(seconds);
+    }
+    return padWithZero(minutes) + ":" + padWithZero(seconds)
   }
 
   _getTimestamp() {
@@ -346,179 +320,167 @@ export default class Main extends React.Component {
     ) {
       return `${this._getMMSSFromMillis(
         this.state.playbackInstancePosition
-      )} / ${this._getMMSSFromMillis(this.state.playbackInstanceDuration)}`;
+      )} / ${this._getMMSSFromMillis(this.state.playbackInstanceDuration)}`
     }
     return ""
   }
 
   render() {
-    return !this.state.fontLoaded ? (
-      <View style={styles.emptyContainer} />
-    ) : (
-        <View style={styles.container}>
-          <View />
-          <View style={styles.nameContainer}>
-            <Text style={[styles.text, { fontFamily: "cutive-mono-regular" }]}>
-              {this.state.playbackInstanceName}
+    return(
+      <View style={styles.container}>
+        <View style={styles.nameContainer}>
+          <Text style={[styles.text]}>
+            {this.state.playbackInstanceName}
+          </Text>
+        </View>
+        <View style={styles.videoContainer}>
+          <Video
+            ref={this._mountVideo}
+            style={[
+              styles.video,
+              {
+                opacity: this.state.showVideo ? 1.0 : 0.0,
+                width: this.state.videoWidth,
+                height: this.state.videoHeight
+              }
+            ]}
+            resizeMode={Video.RESIZE_MODE_CONTAIN}
+            onPlaybackStatusUpdate={this._onPlaybackStatusUpdate}
+            onError={(error) => console.log(error)}
+            onReadyForDisplay={this._onReadyForDisplay}
+            useNativeControls={true}
+          />
+        </View>
+        <View
+          style={[
+            styles.playbackContainer,
+            {
+              opacity: this.state.isLoading ? DISABLED_OPACITY : 1.0
+            }
+          ]}
+        >
+          <Slider
+            style={styles.playbackSlider}
+            value={this._getSeekSliderPosition()}
+            onValueChange={this._onSeekSliderValueChange}
+            onSlidingComplete={this._onSeekSliderSlidingComplete}
+            disabled={this.state.isLoading}
+          />
+          <View style={styles.timestampRow}>
+            <Text
+              style={[
+                styles.text,
+                styles.buffering
+              ]}
+            >
+              {this.state.isBuffering ? BUFFERING_STRING : ""}
+            </Text>
+            <Text
+              style={[
+                styles.text,
+                styles.timestamp
+              ]}
+            >
+              {this._getTimestamp()}
             </Text>
           </View>
-          <Button
-            title="Go to Contact screen"
-            onPress={() => this.props.navigate(CONTACT)}
-          />
-          <View style={styles.space} />
-          <View style={styles.videoContainer}>
-            <Video
-              ref={this._mountVideo}
-              style={[
-                styles.video,
-                {
-                  opacity: this.state.showVideo ? 1.0 : 0.0,
-                  width: this.state.videoWidth,
-                  height: this.state.videoHeight
-                }
-              ]}
-              resizeMode={Video.RESIZE_MODE_CONTAIN}
-              onPlaybackStatusUpdate={this._onPlaybackStatusUpdate}
-              onLoadStart={this._onLoadStart}
-              onLoad={this._onLoad}
-              onError={this._onError}
-              
-              onReadyForDisplay={this._onReadyForDisplay}
-              useNativeControls={true}
-            />
-          </View>
-          <View
-            style={[
-              styles.playbackContainer,
-              {
-                opacity: this.state.isLoading ? DISABLED_OPACITY : 1.0
-              }
-            ]}
+        </View>
+        <View
+          style={[
+            styles.buttonsContainerBase,
+            styles.buttonsContainerTopRow,
+            {
+              opacity: this.state.isLoading ? DISABLED_OPACITY : 1.0
+            }
+          ]}
+        >
+          <TouchableWithoutFeedback
+            underlayColor={BACKGROUND_COLOR}
+            style={styles.wrapper}
+            onPress={this._onBackPressed}
+            disabled={this.state.isLoading}
           >
-            <Slider
-              style={styles.playbackSlider}
-              value={this._getSeekSliderPosition()}
-              onValueChange={this._onSeekSliderValueChange}
-              onSlidingComplete={this._onSeekSliderSlidingComplete}
-              disabled={this.state.isLoading}
+            <FontAwesome5
+              name={ICON_BACK_BUTTON}
+              size={32}
+              color="black"
             />
-            <View style={styles.timestampRow}>
-              <Text
-                style={[
-                  styles.text,
-                  styles.buffering,
-                  { fontFamily: "cutive-mono-regular" }
-                ]}
-              >
-                {this.state.isBuffering ? BUFFERING_STRING : ""}
-              </Text>
-              <Text
-                style={[
-                  styles.text,
-                  styles.timestamp,
-                  { fontFamily: "cutive-mono-regular" }
-                ]}
-              >
-                {this._getTimestamp()}
-              </Text>
-            </View>
-          </View>
-          <View
-            style={[
-              styles.buttonsContainerBase,
-              styles.buttonsContainerTopRow,
-              {
-                opacity: this.state.isLoading ? DISABLED_OPACITY : 1.0
-              }
-            ]}
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            underlayColor={BACKGROUND_COLOR}
+            style={styles.wrapper}
+            onPress={this._onPlayPausePressed}
+            disabled={this.state.isLoading}
           >
-            <TouchableHighlight
+            <FontAwesome5
+              name={
+                this.state.isPlaying
+                  ? ICON_PAUSE_BUTTON
+                  : ICON_PLAY_BUTTON
+              }
+              size={32}
+              color="black"
+            />
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            underlayColor={BACKGROUND_COLOR}
+            style={styles.wrapper}
+            onPress={this._onStopPressed}
+            disabled={this.state.isLoading}
+          >
+            <FontAwesome5
+              name={ICON_STOP_BUTTON}
+              size={32}
+              color="black"
+            />
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            underlayColor={BACKGROUND_COLOR}
+            style={styles.wrapper}
+            onPress={this._onForwardPressed}
+            disabled={this.state.isLoading}
+          >
+            <FontAwesome5
+              name={ICON_FORWARD_BUTTON}
+              size={32}
+              color="black"
+            />
+          </TouchableWithoutFeedback>
+        </View>
+        <View
+          style={[
+            styles.buttonsContainerBase,
+            styles.buttonsContainerMiddleRow
+          ]}
+        >
+          <View style={styles.volumeContainer}>
+            <TouchableWithoutFeedback
               underlayColor={BACKGROUND_COLOR}
               style={styles.wrapper}
-              onPress={this._onBackPressed}
-              disabled={this.state.isLoading}
-            >
-              <FontAwesome5
-                name={ICON_BACK_BUTTON}
-                size={32}
-                color="black"
-              />
-            </TouchableHighlight>
-            <TouchableHighlight
-              underlayColor={BACKGROUND_COLOR}
-              style={styles.wrapper}
-              onPress={this._onPlayPausePressed}
-              disabled={this.state.isLoading}
+              onPress={this._onMutePressed}
             >
               <FontAwesome5
                 name={
-                  this.state.isPlaying
-                    ? ICON_PAUSE_BUTTON
-                    : ICON_PLAY_BUTTON
+                  this.state.muted
+                    ? ICON_MUTED_BUTTON
+                    : ICON_UNMUTED_BUTTON
                 }
                 size={32}
                 color="black"
               />
-            </TouchableHighlight>
-            <TouchableHighlight
-              underlayColor={BACKGROUND_COLOR}
-              style={styles.wrapper}
-              onPress={this._onStopPressed}
-              disabled={this.state.isLoading}
-            >
-              <FontAwesome5
-                name={ICON_STOP_BUTTON}
-                size={32}
-                color="black"
-              />
-            </TouchableHighlight>
-            <TouchableHighlight
-              underlayColor={BACKGROUND_COLOR}
-              style={styles.wrapper}
-              onPress={this._onForwardPressed}
-              disabled={this.state.isLoading}
-            >
-              <FontAwesome5
-                name={ICON_FORWARD_BUTTON}
-                size={32}
-                color="black"
-              />
-            </TouchableHighlight>
+            </TouchableWithoutFeedback>
+            <Slider
+              style={styles.volumeSlider}
+              value={1}
+              onValueChange={this._onVolumeSliderValueChange}
+            />
           </View>
-          <View
-            style={[
-              styles.buttonsContainerBase,
-              styles.buttonsContainerMiddleRow
-            ]}
-          >
-            <View style={styles.volumeContainer}>
-              <TouchableHighlight
-                underlayColor={BACKGROUND_COLOR}
-                style={styles.wrapper}
-                onPress={this._onMutePressed}
-              >
-                <FontAwesome5
-                  name={
-                    this.state.muted
-                      ? ICON_MUTED_BUTTON
-                      : ICON_UNMUTED_BUTTON
-                  }
-                  size={32}
-                  color="black"
-                />
-              </TouchableHighlight>
-              <Slider
-                style={styles.volumeSlider}
-                value={1}
-                onValueChange={this._onVolumeSliderValueChange}
-              />
-            </View>
-          </View>
-          <View />
         </View>
-      )
+        
+      </View>
+    ) 
   }
+
 }
 
 const styles = StyleSheet.create({
@@ -536,9 +498,6 @@ const styles = StyleSheet.create({
   },
   wrapper: {},
   nameContainer: {
-    height: FONT_SIZE
-  },
-  space: {
     height: FONT_SIZE
   },
   videoContainer: {
