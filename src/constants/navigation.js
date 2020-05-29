@@ -1,6 +1,7 @@
 export const screens = {
-    LOGIN: 'LOGIN',
-    MAIN : 'MAIN',
-    PROFILE: 'PROFILE',
-    CHAT: 'CHAT'
+    MAIN : 'Inicio',
+    EVENTS: 'Eventos',
+    DEEJAYS: 'Deejays',
+    CONTACT: 'Contacto',
+    LEGAL: 'Aviso Legal'
 }

@@ -1,31 +1,43 @@
 import * as React from 'react'
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer'
-import TabNavigator from './Tab'
-import { MAIN } from './Navigator'
+import StackNavigator from './Stack'
+import { screens } from '../constants/navigation'
 import map from 'lodash/map'
+
+const { MAIN, EVENTS, DEEJAYS, CONTACT, LEGAL } = screens
 
 const Drawer = createDrawerNavigator()
 
 export default () =>
-    <Drawer.Navigator initialRouteName={MAIN} drawerContent={CustomDrawerContent}>
-        <Drawer.Screen name={MAIN} component={TabNavigator} />
+    <Drawer.Navigator initialRouteName={MAIN}
+        drawerContent={({ navigation }) => CustomDrawerContent(navigation)}>
+        <Drawer.Screen name={MAIN} component={StackNavigator} />
     </Drawer.Navigator>
 
-const CustomDrawerContent = () =>
+const CustomDrawerContent = (navigation) =>
     <DrawerContentScrollView >
         {map(drawerItems, drawerItem =>
-            <DrawerItem key={drawerItem.label} {...drawerItem} />
+            <DrawerItem key={drawerItem.label}
+                onPress={() => navigation.navigate(drawerItem.label)}
+                {...drawerItem} />
         )}
     </DrawerContentScrollView>
 
 
 const drawerItems = [
     {
-        label: "Profile",
-        onPress: function () { console.log("press Profile") }
+        label: MAIN,
     },
     {
-        label: "Help",
-        onPress: function () { console.log("press Help") }
+        label: EVENTS,
+    },
+    {
+        label: DEEJAYS,
+    },
+    {
+        label: CONTACT,
+    },
+    {
+        label: LEGAL,
     }
 ]

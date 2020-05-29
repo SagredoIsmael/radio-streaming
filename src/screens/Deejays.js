@@ -5,10 +5,10 @@ import { MAIN } from '../navigation/Navigator'
 export default ({navigate}) =>
   <View style={styles.container}>
     <Text style={styles.text}>
-      LOGIN SCREEN
+      DEEJAYS SCREEN
   </Text>
     <Button
-      title="Go to next screen"
+      title="Go to main screen"
       onPress={() => navigate(MAIN)}
     />
   </View>
