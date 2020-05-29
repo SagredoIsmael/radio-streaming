@@ -1,0 +1,8 @@
+{
+  "display": "standalone",
+  "lang": "en",
+  "name": "citrikafm",
+  "short_name": "citrikafm",
+  "start_url": "/?utm_source=web_app_manifest",
+  "orientation": "portrait"
+}
