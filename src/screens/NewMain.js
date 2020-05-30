@@ -33,7 +33,7 @@ const Settings = () => {
 
 const soundObject = new Audio.Sound()
 
-const URL_STREAMING = 'https://s3.amazonaws.com/exp-us-standard/audio/playlist-example/Comfort_Fit_-_03_-_Sorry.mp3'
+const URL_STREAMING = 'http://live.radiovoz.es/mp3/stream_coruna.mp3'
 
 
 export default ({ navigate }) => {
@@ -44,7 +44,7 @@ export default ({ navigate }) => {
     const [playing, setPlaying] = useState(false)
 
     const stateAudio = {
-        shouldPlay: true,
+        shouldPlay: false,
         shouldCorrectPitch: true,
         volume: 1.0,
         isMuted: false
