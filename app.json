@@ -10,7 +10,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -19,11 +19,17 @@
     ],
     "ios": {
       "supportsTablet": true,
+      "bundleIdentifier": "com.sagredoismael.citrikafm",
+      "buildNumber": "1.0.0",
       "infoPlist": {
         "UIBackgroundModes": [
           "audio"
         ]
       }
+    },
+    "android": {
+      "package": "com.yourcompany.yourappname",
+      "versionCode": 1
     }
   }
 }
