@@ -47,7 +47,7 @@ const styles = (isWeb) => StyleSheet.create({
     marginLeft: isWeb? '30%' : '10%',
     color: 'white',
     fontSize: sizeNormalize(16),
-
+    textAlign: 'justify'
   },
   textTitle: {
     flex: 1,

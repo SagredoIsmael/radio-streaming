@@ -8,6 +8,7 @@ import LegalScreen from '../redux/containers/legal'
 import { MAIN, EVENTS, DEEJAYS, CONTACT, LEGAL } from './Navigator'
 import colors from '../constants/colors'
 import Icon from '../components/UI/Icon'
+import { sizeNormalize } from '../constants/layout'
 
 const Stack = createStackNavigator()
 
@@ -37,9 +38,7 @@ const headerCommonsOptions = {
 
 const headerOptionsMain = (navigation) => (
     {
-        headerLeft: () => <Icon onPress={navigation.toggleDrawer} name={'md-menu'} />,
+        headerLeft: () => <Icon onPress={navigation.toggleDrawer} name={'md-menu'} style={{marginLeft: sizeNormalize(20)}} />,
         // headerTitle: props => ,
     }
 )
-
-
