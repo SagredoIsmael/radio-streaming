@@ -1,15 +1,20 @@
 import * as React from 'react'
-import { StyleSheet, Text, ScrollView, ImageBackground } from 'react-native'
+import { StyleSheet, Text, ScrollView, ImageBackground, Platform } from 'react-native'
 import { sizeNormalize } from '../constants/layout'
 
-export default ({ navigate }) =>
-  <ImageBackground source={require("../../assets/images/background.jpg")} style={styles.container} >
-    <ScrollView contentContainerStyle={styles.scrollView} style={{ flex: 1 }}>
-      <Text style={styles.textTitle}>
-        Aviso legal y política de privacidad
+export default ({ navigate }) => {
+  const isWeb = Platform.OS == 'web'
+
+  return (
+    <ImageBackground
+      source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/backgroundMobile.jpg")}
+      style={styles().container} >
+      <ScrollView style={styles().scrollView} >
+        <Text style={styles().textTitle}>
+          Aviso legal y política de privacidad
        </Text>
-      <Text style={styles.textDescription}>
-        {`\n
+        <Text style={styles(isWeb).textDescription}>
+          {`\n
         Objeto social \n\nCITRIKA FM es una emisora de radio destinada a la programación musical y entretenimiento.
         \n\n
         Identificación \n\nEn cumplimiento del deber de información establecido en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del comercio electrónico, los datos aquí consignados corresponden al titular del sitio web www.citrikafm.com
@@ -30,37 +35,38 @@ export default ({ navigate }) =>
         \n\n
         Enlaces a otras webs y apps\n\nLos enlaces (links) externos que pueda encontrar en esta web y app son un servicio para los usuarios. Estas páginas no son gestionadas ni controladas por CITRIKA FM, por este motivo, CITRIKA FM no se hace responsable de los contenidos de estos sitios webs o apps, ni éstos están regulados por el presente Aviso Legal. Si accede a estas páginas webs o apps deberá tener en cuenta que sus políticas de privacidad pueden ser diferentes a la nuestra.
         \n\n
-        Legislación aplicable y competencia jurisdiccional\n\n: El presente Aviso Legal se rige por la normativa del Reino de España vigente que le es de aplicación. Para la resolución de las controversias que pudieran derivarse como consecuencia de lo establecido en las presentes disposiciones, y sobre su interpretación, aplicación y cumplimiento, el usuario, en virtud de la aceptación de las condiciones recogidas en este Aviso legal, renuncia expresamente a cualquier otro fuero que pudiera corresponderle. En cualquier caso, dentro de la jurisdicción española, si la legislación permitiera someterse a un fuero concreto, el usuario renuncia expresamente al fuero que le pudiera corresponder y se somete voluntariamente a la jurisdicción de los Juzgados y Tribunales de Madrid.
+        Legislación aplicable y competencia jurisdiccional\n\nEl presente Aviso Legal se rige por la normativa del Reino de España vigente que le es de aplicación. Para la resolución de las controversias que pudieran derivarse como consecuencia de lo establecido en las presentes disposiciones, y sobre su interpretación, aplicación y cumplimiento, el usuario, en virtud de la aceptación de las condiciones recogidas en este Aviso legal, renuncia expresamente a cualquier otro fuero que pudiera corresponderle. En cualquier caso, dentro de la jurisdicción española, si la legislación permitiera someterse a un fuero concreto, el usuario renuncia expresamente al fuero que le pudiera corresponder y se somete voluntariamente a la jurisdicción de los Juzgados y Tribunales de Madrid.
 `}
-      </Text>
-    </ScrollView>
-  </ImageBackground>
+        </Text>
+      </ScrollView>
+    </ImageBackground>
+  )
+}
 
 
-const styles = StyleSheet.create({
+
+const styles = (isWeb) => StyleSheet.create({
   container: {
     flex: 1,
   },
   scrollView: {
     flex: 1,
-    alignItems: 'center'
   },
   textDescription: {
     flex: 1,
-    margin: '5%',
-    margin: '1%',
-    width: '40%',
+    marginRight: isWeb? '30%' : '10%',
+    marginLeft: isWeb? '30%' : '10%',
     color: 'white',
     fontSize: sizeNormalize(16),
-    
+
   },
   textTitle: {
     flex: 1,
-    marginTop: '5%',
+    margin:'5%',
+    marginBottom: '0%',
     color: 'white',
     fontSize: sizeNormalize(26),
     fontWeight: "bold",
     textAlign: 'center'
-
   }
 })

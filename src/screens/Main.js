@@ -5,7 +5,8 @@ import {
     StyleSheet,
     Text,
     TouchableWithoutFeedback,
-    View,
+    ImageBackground,
+    Platform
 } from "react-native"
 import { Audio } from "expo-av"
 import { FontAwesome5 } from "@expo/vector-icons"
@@ -36,11 +37,13 @@ const URL_STREAMING = 'http://live.radiovoz.es/mp3/stream_coruna.mp3'
 
 
 export default ({ navigate }) => {
-    useEffect(() => { 
+    useEffect(() => {
         Settings(),
-        initSoundObject()
-     }, [])
+            initSoundObject()
+    }, [])
     const [playing, setPlaying] = useState(false)
+
+    const isWeb = Platform.OS == 'web'
 
     const stateAudio = {
         shouldPlay: false,
@@ -53,7 +56,7 @@ export default ({ navigate }) => {
         soundObject.loadAsync(
             { uri: URL_STREAMING },
             stateAudio
-            )
+        )
     }
 
     const playAudio = async () => {
@@ -71,7 +74,9 @@ export default ({ navigate }) => {
     }
 
     return (
-        <View style={styles.container}>
+        <ImageBackground
+            source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/backgroundMobile.jpg")}
+            style={styles.container} >
             <TouchableWithoutFeedback
                 underlayColor={colors.black}
                 onPress={() => playAudio()}
@@ -82,10 +87,10 @@ export default ({ navigate }) => {
                         : ICON_PLAY_BUTTON
                     }
                     size={sizeNormalize(30)}
-                    color={colors.black}
+                    color={colors.white}
                 />
             </TouchableWithoutFeedback>
-        </View>
+        </ImageBackground>
     )
 }
 

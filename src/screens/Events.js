@@ -1,9 +1,12 @@
 import * as React from 'react'
-import { StyleSheet, View, Text, Button, ImageBackground } from 'react-native'
+import { StyleSheet, View, Text, Button, ImageBackground, Platform } from 'react-native'
 
-export default ({ navigation }) =>
-
-  <ImageBackground source={require("../../assets/images/background.jpg")} style={styles.backgroucontainerndImage} >
+export default ({ navigation }) => {
+  const isWeb = Platform.OS == 'web'
+  return (
+    <ImageBackground
+    source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/backgroundMobile.jpg")}
+    style={styles.container} >
     <Text style={styles.text}>
       EVENTS SCREEN
   </Text>
@@ -20,6 +23,8 @@ export default ({ navigation }) =>
       onPress={() => navigation.navigate('CHAT')}
     />
   </ImageBackground >
+  )
+}
 
 
 
@@ -30,6 +35,6 @@ const styles = StyleSheet.create({
   text: {
     color: 'white'
   },
- 
+
 })
 

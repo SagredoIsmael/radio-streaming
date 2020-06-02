@@ -12,5 +12,6 @@ export default {
   warningText: '#666804',
   noticeBackground: '#2f95dc',
   noticeText: '#fff',
-  black: 'black'
+  black: 'black',
+  white: 'white'
 };
