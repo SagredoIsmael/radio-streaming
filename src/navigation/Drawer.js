@@ -11,7 +11,7 @@ const Drawer = createDrawerNavigator()
 export default () =>
     <Drawer.Navigator initialRouteName={MAIN}
         drawerContent={({ navigation }) => CustomDrawerContent(navigation)}>
-        <Drawer.Screen name={MAIN} component={StackNavigator} />
+        <Drawer.Screen name={"Drawer"} component={StackNavigator} />
     </Drawer.Navigator>
 
 const CustomDrawerContent = (navigation) =>
