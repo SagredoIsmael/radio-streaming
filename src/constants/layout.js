@@ -18,12 +18,13 @@ export const sizeNormalize = (size) => {
   switch (Platform.OS) {
     case 'ios':
       return Math.round(PixelRatio.roundToNearestPixel(newSize))
-  
+
     case 'android':
       return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2
-  
+
     case 'web':
-      return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 100
+      const webSize = size / 15
+      return webSize.toString() + 'rem'
   }
 }
 
@@ -34,11 +35,11 @@ const XSMAX_HEIGHT = 896;
 
 
 export const isIPhoneX = () => Platform.OS === 'ios' && !Platform.isPad && !Platform.isTVOS
-    ? width === X_WIDTH && height === X_HEIGHT || width === XSMAX_WIDTH && height === XSMAX_HEIGHT
-    : false;
+  ? width === X_WIDTH && height === X_HEIGHT || width === XSMAX_WIDTH && height === XSMAX_HEIGHT
+  : false;
 
 export const StatusBarHeight = Platform.select({
-    ios: isIPhoneX() ? 44 : 20,
-    android: StatusBar.currentHeight,
-    default: 0
+  ios: isIPhoneX() ? 44 : 20,
+  android: StatusBar.currentHeight,
+  default: 0
 })

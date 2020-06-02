@@ -1,10 +1,9 @@
 import * as React from 'react'
-import { StyleSheet, View, Text, Button } from 'react-native'
-import Header from '../components/header/Header'
+import { StyleSheet, View, Text, Button, ImageBackground } from 'react-native'
 
 export default ({ navigation }) =>
-  <View style={styles.container}>
-    <Header />
+
+  <ImageBackground source={require("../../assets/images/background.jpg")} style={styles.backgroucontainerndImage} >
     <Text style={styles.text}>
       EVENTS SCREEN
   </Text>
@@ -20,16 +19,17 @@ export default ({ navigation }) =>
       title="Jump to Map"
       onPress={() => navigation.navigate('CHAT')}
     />
-  </View>
+  </ImageBackground >
+
 
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#111',
   },
   text: {
     color: 'white'
-  }
+  },
+ 
 })
 
