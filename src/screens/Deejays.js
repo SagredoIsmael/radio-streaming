@@ -1,27 +1,23 @@
 import * as React from 'react'
-import { StyleSheet, View, Text, Button } from 'react-native'
+import { StyleSheet, ImageBackground, Platform } from 'react-native'
 import { MAIN } from '../navigation/Navigator'
 
-export default ({navigate}) =>
-  <View style={styles.container}>
-    <Text style={styles.text}>
-      DEEJAYS SCREEN
-  </Text>
-    <Button
-      title="Go to main screen"
-      onPress={() => navigate(MAIN)}
-    />
-  </View>
+export default ({ navigate }) => {
+  const isWeb = Platform.OS == 'web'
+  return (
+    <ImageBackground
+      source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/backgroundMobile.jpg")}
+      style={styles.container} >
+    </ImageBackground>
+  )
+}
+
 
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center'
-  },
-  text: {
-    color: 'black'
   }
 })
