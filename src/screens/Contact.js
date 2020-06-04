@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   infoWrapper: {
     width: '30%',
     backgroundColor: colors.black,
-    borderColor: colors.primary,
+    borderColor: colors.lightBlack,
     borderWidth: 1,
   },
   textTitle: {
