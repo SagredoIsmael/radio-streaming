@@ -13,5 +13,6 @@ export default {
   noticeBackground: '#2f95dc',
   noticeText: '#fff',
   black: 'black',
-  white: 'white'
+  white: 'white',
+  lightBlack: '#353b3d'
 };

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { StyleSheet, Text, ScrollView, ImageBackground, Platform } from 'react-native'
 import { sizeNormalize } from '../constants/layout'
+import colors from '../constants/colors'
 
 export default ({ navigate }) => {
   const isWeb = Platform.OS == 'web'
@@ -45,7 +46,7 @@ const styles = (isWeb) => StyleSheet.create({
     flex: 1,
     marginRight: isWeb? '30%' : '10%',
     marginLeft: isWeb? '30%' : '10%',
-    color: 'white',
+    color: colors.white,
     fontSize: sizeNormalize(16),
     textAlign: 'justify'
   },
@@ -53,7 +54,7 @@ const styles = (isWeb) => StyleSheet.create({
     flex: 1,
     margin:'5%',
     marginBottom: '0%',
-    color: 'white',
+    color: colors.white,
     fontSize: sizeNormalize(26),
     fontWeight: "bold",
     textAlign: 'center'

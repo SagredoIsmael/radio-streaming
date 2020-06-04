@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
     drawerContainer: {
         flex: 1,
         backgroundColor: colors.black,
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        padding: '7%'
     },
     labelDrawer: {
         color: colors.white,
@@ -60,6 +61,7 @@ const styles = StyleSheet.create({
     drawerItem: {
         borderBottomColor: colors.primary,
         borderBottomWidth: 1,
+        paddingTop:'8%',
     },
     socialDrawerItem: {
         margin:'15%',
