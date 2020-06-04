@@ -16,23 +16,23 @@ const { MAIN, EVENTS, DEEJAYS, CONTACT, LEGAL } = screens
 const drawerItems = [
     {
         label: MAIN,
-        icon: () => <AntDesign color={colors.white} size={sizeNormalize(30)} name={'home'}/>
+        icon: () => <AntDesign color={colors.white} size={sizeNormalize(22)} name={'home'}/>
     },
     {
         label: EVENTS,
-        icon: () => <Feather color={colors.white} size={sizeNormalize(30)} name={'calendar'}/>
+        icon: () => <Feather color={colors.white} size={sizeNormalize(22)} name={'calendar'}/>
     },
     {
         label: DEEJAYS,
-        icon: () => <Feather color={colors.white} size={sizeNormalize(30)} name={'sliders'}/>
+        icon: () => <Feather color={colors.white} size={sizeNormalize(22)} name={'sliders'}/>
     },
     {
         label: CONTACT,
-        icon: () => <AntDesign color={colors.white} size={sizeNormalize(30)} name={'mail'}/>
+        icon: () => <AntDesign color={colors.white} size={sizeNormalize(22)} name={'mail'}/>
     },
     {
         label: LEGAL,
-        icon: () => <Feather color={colors.white} size={sizeNormalize(30)} name={'file-text'}/>
+        icon: () => <Feather color={colors.white} size={sizeNormalize(22)} name={'file-text'}/>
     }
 ]
 

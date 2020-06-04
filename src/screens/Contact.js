@@ -9,27 +9,27 @@ export default ({ navigate }) => {
   return (
     <ImageBackground
       source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/provisional/5.jpg")}
-      style={styles.container} >
-      <View style={styles.infoWrapper}>
-        <Text style={styles.textTitle}>
+      style={styles().container} >
+      <View style={styles(isWeb).infoWrapper}>
+        <Text style={styles().textTitle}>
           MADRID
           </Text>
-        <Text style={styles.textDescription}>
+        <Text style={styles().textDescription}>
           {
             `\nCITRIKA FM
             \nTeléfono: 649 540 551
             \nHorario: de 16:00 a 22:00 horas`
           }
         </Text>
-        <View style={styles.emailWrapper}>
-          <Text style={styles.textEmail}>
+        <View style={styles().emailWrapper}>
+          <Text style={styles().textEmail}>
            {`\nEmail: `}
         </Text>
           <TouchableOpacity
-            style={styles.loginScreenButton}
+            style={styles().loginScreenButton}
             onPress={() => Linking.openURL('mailto:info@citrikafm.com')}
             underlayColor={colors.primary}>
-            <Text style={styles.email}>{`\ninfo@citrikafm.com`}</Text>
+            <Text style={styles().email}>{`\ninfo@citrikafm.com`}</Text>
           </TouchableOpacity>
         </View>
       </View >
@@ -39,14 +39,14 @@ export default ({ navigate }) => {
 
 
 
-const styles = StyleSheet.create({
+const styles = (isWeb) => StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
   },
   infoWrapper: {
-    width: '30%',
+    width: isWeb? '30%' : '80%',
     backgroundColor: colors.black,
     borderColor: colors.lightBlack,
     borderWidth: 1,
@@ -74,7 +74,6 @@ const styles = StyleSheet.create({
     fontSize: sizeNormalize(16)
   },
   emailWrapper:{
-    backgrouncolor: 'pink',
     flexDirection: 'row',
     marginLeft: '7%',
     marginRight: '7%',
