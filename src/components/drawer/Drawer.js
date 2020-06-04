@@ -6,6 +6,7 @@ import colors from '../../constants/colors'
 import { sizeNormalize } from '../../constants/layout'
 import Icon from '../UI/Icon'
 import { screens } from '../../constants/navigation'
+import constants from '../../constants/fetch'
 
 const { MAIN, EVENTS, DEEJAYS, CONTACT, LEGAL } = screens
 
@@ -39,10 +40,9 @@ export default ({ navigation }) =>
             )}
         </View>
         <View style={styles.socialDrawerItem}>
-            <Icon onPress={() => console.log('pressInsta')} name={'logo-instagram'} color={colors.white} size={30} />
-            <Icon onPress={() => console.log('pressFB')} name={'logo-facebook'} color={colors.white} size={30} />
-            <Icon onPress={() => console.log('pressTwitter')} name={'logo-twitter'} color={colors.white} size={30} />
-            <Icon onPress={() => console.log('pressYoutube')} name={'logo-youtube'} color={colors.white} size={30} />
+            <Icon onPress={() => window.open(constants.INSTAGRAM,'_blank')} name={'logo-instagram'} color={colors.white} size={30} />
+            <Icon onPress={() => window.open(constants.FACEBOOK,'_blank')} name={'logo-facebook'} color={colors.white} size={30} />
+            <Icon onPress={() => window.open(constants.TWITTER,'_blank')} name={'logo-twitter'} color={colors.white} size={30} />
         </View>
     </View>
 

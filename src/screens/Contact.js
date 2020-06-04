@@ -5,7 +5,7 @@ export default ({ navigate }) => {
   const isWeb = Platform.OS == 'web'
   return (
     <ImageBackground
-      source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/backgroundMobile.jpg")}
+      source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/provisional/5.jpg")}
       style={styles.container} >
     </ImageBackground>
   )
