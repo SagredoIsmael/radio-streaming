@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react"
 import {
-    Dimensions,
-    Slider,
     StyleSheet,
-    Text,
     TouchableWithoutFeedback,
     ImageBackground,
-    Platform
 } from "react-native"
 import { Audio } from "expo-av"
 import { FontAwesome5 } from "@expo/vector-icons"
@@ -36,14 +32,12 @@ const soundObject = new Audio.Sound()
 const URL_STREAMING = 'http://live.radiovoz.es/mp3/stream_coruna.mp3'
 
 
-export default ({ navigate }) => {
+export default ({ navigate, isWeb }) => {
     useEffect(() => {
         Settings(),
             initSoundObject()
     }, [])
     const [playing, setPlaying] = useState(false)
-
-    const isWeb = Platform.OS == 'web'
 
     const stateAudio = {
         shouldPlay: false,

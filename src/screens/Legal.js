@@ -1,21 +1,18 @@
 import * as React from 'react'
-import { StyleSheet, Text, ScrollView, ImageBackground, Platform } from 'react-native'
+import { StyleSheet, Text, ScrollView, ImageBackground } from 'react-native'
 import { sizeNormalize } from '../constants/layout'
 import colors from '../constants/colors'
 
-export default ({ navigate }) => {
-  const isWeb = Platform.OS == 'web'
-
-  return (
-    <ImageBackground
-      source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/provisional/2.jpg")}
-      style={styles().container} >
-      <ScrollView style={styles().scrollView} >
-        <Text style={styles().textTitle}>
-          Aviso legal y política de privacidad
+export default ({ navigate, isWeb }) =>
+  <ImageBackground
+    source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/provisional/2.jpg")}
+    style={styles().container} >
+    <ScrollView style={styles().scrollView} >
+      <Text style={styles().textTitle}>
+        Aviso legal y política de privacidad
        </Text>
-        <Text style={styles(isWeb).textDescription}>
-          {`\nObjeto social: CITRIKA FM es una emisora de radio destinada a la programación musical y entretenimiento.
+      <Text style={styles(isWeb).textDescription}>
+        {`\nObjeto social: CITRIKA FM es una emisora de radio destinada a la programación musical y entretenimiento.
         \n\nIdentificación: En cumplimiento del deber de información establecido en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del comercio electrónico, los datos aquí consignados corresponden al titular del sitio web www.citrikafm.com
         \n\nDenominación: CITRIKA FM\nCIF: 70520515P\nTeléfono: 649 540 551\nEmail: info@citrikafm.com
         \n\nPropiedad intelectual e industrial: Los contenidos de este sitio, incluyendo los textos, imágenes y diseños gráficos, pertenecen única y exclusivamente a CITRIKA FM y su propietario, o a terceros que han autorizado su uso. CITRIKA FM presenta estos contenidos con fines de información y promoción, así como de entretenimiento. CITRIKA FM autoriza su utilización exclusivamente con estos fines. Cualquier uso de los textos, imágenes, diseños y contenidos deberá citarse de manera expresa su pertenencia a CITRIKA FM, quien se reserva el derecho a iniciar las acciones legales oportunas para reparar los daños y perjuicios causados por cualquier acto que vulnere sus derechos de propiedad intelectual o industrial.
@@ -27,11 +24,9 @@ export default ({ navigate }) => {
         \n\nEnlaces a otras webs y apps: Los enlaces (links) externos que pueda encontrar en esta web y app son un servicio para los usuarios. Estas páginas no son gestionadas ni controladas por CITRIKA FM, por este motivo, CITRIKA FM no se hace responsable de los contenidos de estos sitios webs o apps, ni éstos están regulados por el presente Aviso Legal. Si accede a estas páginas webs o apps deberá tener en cuenta que sus políticas de privacidad pueden ser diferentes a la nuestra.
         \n\nLegislación aplicable y competencia jurisdiccional: El presente Aviso Legal se rige por la normativa del Reino de España vigente que le es de aplicación. Para la resolución de las controversias que pudieran derivarse como consecuencia de lo establecido en las presentes disposiciones, y sobre su interpretación, aplicación y cumplimiento, el usuario, en virtud de la aceptación de las condiciones recogidas en este Aviso legal, renuncia expresamente a cualquier otro fuero que pudiera corresponderle. En cualquier caso, dentro de la jurisdicción española, si la legislación permitiera someterse a un fuero concreto, el usuario renuncia expresamente al fuero que le pudiera corresponder y se somete voluntariamente a la jurisdicción de los Juzgados y Tribunales de Madrid.
 `}
-        </Text>
-      </ScrollView>
-    </ImageBackground>
-  )
-}
+      </Text>
+    </ScrollView>
+  </ImageBackground>
 
 
 
@@ -44,15 +39,15 @@ const styles = (isWeb) => StyleSheet.create({
   },
   textDescription: {
     flex: 1,
-    marginRight: isWeb? '30%' : '10%',
-    marginLeft: isWeb? '30%' : '10%',
+    marginRight: isWeb ? '30%' : '10%',
+    marginLeft: isWeb ? '30%' : '10%',
     color: colors.white,
     fontSize: sizeNormalize(16),
     textAlign: 'justify'
   },
   textTitle: {
     flex: 1,
-    margin:'5%',
+    margin: '5%',
     marginBottom: '0%',
     color: colors.white,
     fontSize: sizeNormalize(26),

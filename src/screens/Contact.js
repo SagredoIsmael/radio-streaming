@@ -1,41 +1,37 @@
 import * as React from 'react'
-import { StyleSheet, ImageBackground, Platform, View, Text, Button, TouchableOpacity } from 'react-native'
+import { StyleSheet, ImageBackground, View, Text, TouchableOpacity } from 'react-native'
 import colors from '../constants/colors'
 import { sizeNormalize, isStraitScreen } from '../constants/layout'
 import { Linking } from 'react-native'
 
-export default ({ navigate }) => {
-  const isWeb = Platform.OS == 'web' && !isStraitScreen
-  return (
-    <ImageBackground
-      source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/provisional/5.jpg")}
-      style={styles().container} >
-      <View style={styles(isWeb).infoWrapper}>
-        <Text style={styles().textTitle}>
-          MADRID
-          </Text>
-        <Text style={styles().textDescription}>
-          {
-            `\nCITRIKA FM
-            \nTeléfono: 649 540 551
-            \nHorario: de 16:00 a 22:00 horas`
-          }
+export default ({ navigate, isWeb }) =>
+  <ImageBackground
+    source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/provisional/5.jpg")}
+    style={styles().container} >
+    <View style={styles(isWeb).infoWrapper}>
+      <Text style={styles().textTitle}>
+        MADRID
+    </Text>
+      <Text style={styles().textDescription}>
+        {
+          `\nCITRIKA FM
+      \nTeléfono: 649 540 551
+      \nHorario: de 16:00 a 22:00 horas`
+        }
+      </Text>
+      <View style={styles().emailWrapper}>
+        <Text style={styles().textEmail}>
+          {`\nEmail: `}
         </Text>
-        <View style={styles().emailWrapper}>
-          <Text style={styles().textEmail}>
-           {`\nEmail: `}
-        </Text>
-          <TouchableOpacity
-            style={styles().loginScreenButton}
-            onPress={() => Linking.openURL('mailto:info@citrikafm.com')}
-            underlayColor={colors.primary}>
-            <Text style={styles().email}>{`\ninfo@citrikafm.com`}</Text>
-          </TouchableOpacity>
-        </View>
-      </View >
-    </ImageBackground >
-  )
-}
+        <TouchableOpacity
+          style={styles().loginScreenButton}
+          onPress={() => Linking.openURL('mailto:info@citrikafm.com')}
+          underlayColor={colors.primary}>
+          <Text style={styles().email}>{`\ninfo@citrikafm.com`}</Text>
+        </TouchableOpacity>
+      </View>
+    </View >
+  </ImageBackground >
 
 
 
@@ -46,7 +42,7 @@ const styles = (isWeb) => StyleSheet.create({
     alignItems: 'center'
   },
   infoWrapper: {
-    width: isWeb? '30%' : '80%',
+    width: isWeb ? '30%' : '80%',
     backgroundColor: colors.black,
     borderColor: colors.lightBlack,
     borderWidth: 1,
@@ -73,13 +69,13 @@ const styles = (isWeb) => StyleSheet.create({
     color: colors.white,
     fontSize: sizeNormalize(16)
   },
-  emailWrapper:{
+  emailWrapper: {
     flexDirection: 'row',
     marginLeft: '7%',
     marginRight: '7%',
     marginBottom: '7%',
   },
-  email:{
+  email: {
     color: colors.primary,
     fontSize: sizeNormalize(16),
     fontWeight: "bold",

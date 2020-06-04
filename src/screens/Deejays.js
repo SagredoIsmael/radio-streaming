@@ -1,16 +1,11 @@
 import * as React from 'react'
-import { StyleSheet, ImageBackground, Platform } from 'react-native'
-import { MAIN } from '../navigation/Navigator'
+import { StyleSheet, ImageBackground } from 'react-native'
 
-export default ({ navigate }) => {
-  const isWeb = Platform.OS == 'web'
-  return (
-    <ImageBackground
-      source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/provisional/4.jpg")}
-      style={styles.container} >
-    </ImageBackground>
-  )
-}
+export default ({ navigate, isWeb }) =>
+  <ImageBackground
+    source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/provisional/4.jpg")}
+    style={styles.container} >
+  </ImageBackground>
 
 
 
