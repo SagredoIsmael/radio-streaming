@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { StyleSheet, ImageBackground, Platform, View, Text, Button, TouchableOpacity } from 'react-native'
 import colors from '../constants/colors'
-import { sizeNormalize } from '../constants/layout'
+import { sizeNormalize, isStraitScreen } from '../constants/layout'
 import { Linking } from 'react-native'
 
 export default ({ navigate }) => {
-  const isWeb = Platform.OS == 'web'
+  const isWeb = Platform.OS == 'web' && !isStraitScreen
   return (
     <ImageBackground
       source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/provisional/5.jpg")}

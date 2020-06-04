@@ -11,6 +11,8 @@ export default {
   isSmallDevice: width < 375,
 }
 
+export const isStraitScreen = width < 1000
+
 const scale = width / 320
 
 export const sizeNormalize = (size) => {
