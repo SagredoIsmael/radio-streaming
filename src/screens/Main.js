@@ -75,7 +75,7 @@ export default ({ navigate }) => {
 
     return (
         <ImageBackground
-            source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/backgroundMobile.jpg")}
+            source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/provisional/1.jpg")}
             style={styles.container} >
             <TouchableWithoutFeedback
                 underlayColor={colors.black}

@@ -7,7 +7,7 @@ export default ({ navigate }) => {
 
   return (
     <ImageBackground
-      source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/backgroundMobile.jpg")}
+      source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/provisional/2.jpg")}
       style={styles().container} >
       <ScrollView style={styles().scrollView} >
         <Text style={styles().textTitle}>

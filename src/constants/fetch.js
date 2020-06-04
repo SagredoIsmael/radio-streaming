@@ -15,6 +15,11 @@ export default {
     DEFAULT_HEADER: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-    }
+    },
+
+    /* Social networks */
+    INSTAGRAM: 'https://www.instagram.com/citrikafm/',
+    FACEBOOK: 'https://www.facebook.com/CitrikaFm/',
+    TWITTER: 'https://www.twitter.com/citrikafm'
 
 }
