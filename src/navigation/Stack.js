@@ -9,6 +9,7 @@ import { MAIN, EVENTS, DEEJAYS, CONTACT, LEGAL } from './Navigator'
 import colors from '../constants/colors'
 import Icon from '../components/UI/Icon'
 import { sizeNormalize } from '../constants/layout'
+import Header from '../components/header/Header'
 
 const Stack = createStackNavigator()
 
@@ -28,7 +29,7 @@ export default () =>
 
 const headerCommonsOptions = {
     headerStyle: {
-        backgroundColor: colors.primary,
+        backgroundColor: colors.black,
     },
     headerTintColor: colors.secondary,
     headerTitleStyle: {
@@ -38,7 +39,6 @@ const headerCommonsOptions = {
 
 const headerOptionsMain = (navigation) => (
     {
-        headerLeft: () => <Icon onPress={navigation.toggleDrawer} name={'md-menu'} style={{marginLeft: sizeNormalize(20)}} size={30}/>,
-        // headerTitle: props => ,
-    }
+        headerLeft: () => <Icon color={colors.primary} onPress={navigation.toggleDrawer} name={'md-menu'} style={{marginLeft: sizeNormalize(20)}} size={30}/>,
+        headerTitle: props => <Header {...props} />   }
 )

@@ -1,0 +1,64 @@
+import * as React from 'react'
+import { View, StyleSheet, Text, Image } from 'react-native'
+import { sizeNormalize } from '../../constants/layout'
+import colors from '../../constants/colors'
+import AudioPlayer from './AudioPlayer'
+
+
+export default (isWeb) =>
+    <View style={styles().container}>
+        <AudioPlayer />
+        <View style={styles().infoUser}>
+            <Text style={styles().textTitle}>
+                EN DIRECTO
+            </Text>
+            <Text style={styles().textDescription}>
+                ISRAEL
+            </Text>
+        </View>
+        <Image
+            style={styles().imageSoundGif}
+            source={{ uri: 'https://media.giphy.com/media/XMaB779YCmP9m/giphy.gif' }} />
+        <Image
+            style={styles().image}
+            source={require('../../../assets/images/provisional/icon.png')} />
+    </View>
+
+const styles = (isWeb) => StyleSheet.create({
+    container: {
+        flex: 1 / 8,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: colors.black,
+        paddingStart:'2%'
+    },
+    infoUser: {
+        flexDirection: 'column',
+        margin:'2%',
+        marginTop: '4%',
+        marginBottom: '4%'
+    },
+    textTitle: {
+        flex: 1,
+        color: colors.white,
+        fontSize: sizeNormalize(20),
+        fontWeight: "bold",
+    },
+    textDescription: {
+        flex: 1,
+        color: colors.primary,
+        fontSize: sizeNormalize(16),
+    },
+    image: {
+        width: '20%',
+        height: '80%',
+        resizeMode: 'contain',
+    },
+    imageSoundGif: {
+        width: '20%',
+        height: '100%',
+        resizeMode: 'contain',
+        marginLeft: '2%'
+    }
+})

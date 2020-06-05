@@ -32,7 +32,7 @@ export default ({ navigate, isWeb }) =>
 
 const styles = (isWeb) => StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   scrollView: {
     flex: 1,
