@@ -20,6 +20,19 @@ export default {
     /* Social networks */
     INSTAGRAM: 'https://www.instagram.com/citrikafm/',
     FACEBOOK: 'https://www.facebook.com/CitrikaFm/',
-    TWITTER: 'https://www.twitter.com/citrikafm'
+    TWITTER: 'https://www.twitter.com/citrikafm',
+
+    /* Config firebase */
+    FIREBASE: {
+        apiKey: "AIzaSyDIZBtz_H3Y4C50eXoEPIE9d5kyz2kL0Hs",
+        authDomain: "citrikafm.firebaseapp.com",
+        databaseURL: "https://citrikafm.firebaseio.com",
+        projectId: "citrikafm",
+        storageBucket: "citrikafm.appspot.com",
+        messagingSenderId: "218124095941",
+        appId: "1:218124095941:web:62abbade64644dca2d3bac",
+        measurementId: "G-VLBND9SC4Q"
+    },
+    
 
 }
