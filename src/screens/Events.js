@@ -4,7 +4,7 @@ import List from '../components/list/List'
 
 export default ({ navigate, isWeb, data, error }) =>
   <ImageBackground
-    source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/provisional/4.jpg")}
+    source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/backgroundMobile/4.jpg")}
     style={styles.container} >
     <List isWeb={isWeb} data={data} />
   </ImageBackground>

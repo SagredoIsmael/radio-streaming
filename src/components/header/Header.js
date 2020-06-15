@@ -7,7 +7,7 @@ export default () =>
     <View style={styles().container}>
         <Image
             style={styles().image}
-            source={require('../../../assets/images/provisional/logo.png')} />
+            source={require('../../../assets/images/citrika_black.png')} />
     </View>
 
 

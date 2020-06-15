@@ -5,7 +5,7 @@ import colors from '../constants/colors'
 
 export default ({ navigate, isWeb }) =>
   <ImageBackground
-    source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/provisional/2.jpg")}
+    source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/backgroundMobile/2.jpg")}
     style={styles().container} >
     <ScrollView style={styles().scrollView} >
       <Text style={styles().textTitle}>

@@ -23,7 +23,7 @@ export default ({ item, isWeb }) => {
                     source={{ uri: item.photo }} />
                 <Image
                     style={ItemStyle(finalDimension.width).logo}
-                    source={require('../../../assets/images/provisional/icon.png')} />
+                    source={require('../../../assets/images/icon_red.png')} />
                 <Text style={ItemStyle().title}>{item.title}</Text>
                 <Text style={ItemStyle().subTitle}>{item.subtitle}</Text>
                 <Text style={ItemStyle().subTitle}>{item.little_description}</Text>

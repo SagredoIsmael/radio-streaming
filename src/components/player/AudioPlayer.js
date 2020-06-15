@@ -69,7 +69,7 @@ export default ({ navigate, isWeb }) => {
 
     return (
         <ImageBackground
-            source={isWeb ? require("../../../assets/images/background.jpg") : require("../../../assets/images/provisional/1.jpg")}
+            source={isWeb ? require("../../../assets/images/background.jpg") : require("../../../assets/images/backgroundMobile/1.jpg")}
             style={styles.container} >
             <TouchableOpacity
                 underlayColor={colors.black}

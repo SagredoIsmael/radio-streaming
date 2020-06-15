@@ -21,7 +21,7 @@ export default (isWeb) =>
             source={{ uri: 'https://media.giphy.com/media/XMaB779YCmP9m/giphy.gif' }} />
         <Image
             style={styles().image}
-            source={require('../../../assets/images/provisional/icon.png')} />
+            source={require('../../../assets/images/icon_white.png')} />
     </View>
 
 const styles = (isWeb) => StyleSheet.create({
