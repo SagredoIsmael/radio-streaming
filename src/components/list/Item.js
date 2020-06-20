@@ -27,12 +27,14 @@ export default ({ item, isWeb }) => {
                     source={require('../../../assets/images/icon_red.png')} />
                 <Text style={ItemStyle().title}>{item.title}</Text>
                 <Text style={ItemStyle().subTitle}>{item.subtitle}</Text>
-                <ReadMore
-                    numberOfLines={3}
-                    renderTruncatedFooter={renderTruncatedFooter}
-                    renderRevealedFooter={renderRevealedFooter}>
-                    <Text style={ItemStyle().description}>{item.description}</Text>
-                </ReadMore>
+                <View style={ItemStyle().textWrapper}>
+                    <ReadMore
+                        numberOfLines={3}
+                        renderTruncatedFooter={renderTruncatedFooter}
+                        renderRevealedFooter={renderRevealedFooter}>
+                        <Text style={ItemStyle().description}>{item.description}</Text>
+                    </ReadMore>
+                </View>
             </View>
         )
     return null
@@ -90,15 +92,17 @@ const ItemStyle = (width, height, isWeb) => StyleSheet.create({
     subTitle: {
         color: colors.white,
         fontSize: sizeNormalize(18),
+        fontWeight: "bold",
+        margin: '2%',
+        marginTop: '0%',
+    },
+    textWrapper: {
         margin: '3%',
         marginTop: '0%',
-        fontWeight: "bold",
     },
     description: {
         color: colors.white,
         fontSize: sizeNormalize(15),
-        margin: 20,
-        marginTop: '0%'
     },
     logo: {
         width: sizeNormalize(30),
@@ -107,8 +111,8 @@ const ItemStyle = (width, height, isWeb) => StyleSheet.create({
         alignSelf: 'flex-start',
         marginTop: sizeNormalize(-40),
     },
-    revealedFooter:{
+    revealedFooter: {
         color: colors.primary,
-        margin: '2%'
+        marginTop: '1%'
     }
 })
