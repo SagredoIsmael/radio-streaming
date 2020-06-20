@@ -1,25 +1,24 @@
-import * as React from 'react'
-import { StyleSheet, Text, ScrollView, ImageBackground } from 'react-native'
-import { sizeNormalize } from '../constants/layout'
-import colors from '../constants/colors'
+import React, { useEffect } from 'react'
+import { StyleSheet, ImageBackground } from 'react-native'
+import List from '../components/list/List'
 
-export default ({ navigate, isWeb }) =>
-  <ImageBackground
-    source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/provisional/2.jpg")}
-    style={styles().container} >
-    <ScrollView style={styles().scrollView} >
-     
-    </ScrollView>
-  </ImageBackground>
+export default ({ navigate, isWeb, fetchDataBlog, data, error, isLoading }) => {
+  useEffect(() => fetchDataBlog(), [])
+  return (
+    <ImageBackground
+      source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/backgroundMobile/4.jpg")}
+      style={styles.container} >
+      {!isLoading &&
+        <List isWeb={isWeb} data={data} isMain/>}
+    </ImageBackground>
+  )
+}
 
 
-
-const styles = (isWeb) => StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  scrollView: {
-    flex: 1,
-  },
- 
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 })

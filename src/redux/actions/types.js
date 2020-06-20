@@ -21,3 +21,8 @@ export const GO_BACK_NAVIGATE = 'GO_BACK_NAVIGATE'
 export const RESET_NAVIGATE = 'RESET_NAVIGATE'
 export const TAB_NAVIGATE = 'TAB_NAVIGATE'
 export const TOGGLE_DRAWER = 'TOGGLE_DRAWER'
+
+/*Actions blog*/
+export const GET_DATA_BLOG = 'GET_DATA_BLOG'
+export const SET_DATA_BLOG = 'SET_DATA_BLOG'
+export const ERROR_DATA_BLOG = 'ERROR_DATA_BLOG'

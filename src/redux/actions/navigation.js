@@ -33,13 +33,13 @@ export const navigate = (routeName, params = {}) => (dispatch) => {
     })
   )
 }
-  
+
 export const goBack = () => (dispatch) => {
   dispatch(goBackNavigate())
   navigationRef.current?.dispatch(CommonActions.goBack())
 }
 
-export const reset = (routeName, params = {}) => (dispatch) =>{
+export const reset = (routeName, params = {}) => (dispatch) => {
   dispatch(resetNavigate())
   navigationRef.current?.dispatch(
     CommonActions.reset({
@@ -48,7 +48,7 @@ export const reset = (routeName, params = {}) => (dispatch) =>{
     })
   )
 }
-  
+
 export const toggleDrawer = () => (dispatch) => {
   dispatch(toggleDrawerNavigate())
   navigationRef.current?.dispatch(DrawerActions.toggleDrawer())

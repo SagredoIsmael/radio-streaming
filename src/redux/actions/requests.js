@@ -2,6 +2,7 @@ import assign from 'lodash/assign'
 import isEmpty from 'lodash/isEmpty'
 import { REQUEST_START, REQUEST_END } from './types'
 import { getUserToken } from './../selectors/user'
+import { firestore } from '../../../App'
 
 export const setRequestStart = requestType => ({
   type: REQUEST_START,
@@ -60,3 +61,31 @@ export const fetchRequestWrapper = ({
       })
   })
 }
+
+
+export const fetchSetFirestore = (collection, doc, body) => {
+  firestore.collection(collection).doc(doc).set(body)
+}
+
+export const fetchGetDocFirestore = (collection, doc, succesFunction, errorFunction) => dispatch =>
+  firestore.collection(collection).doc(doc).get()
+    .then(function (data) {
+      if (data.exists)
+        dispatch(succesFunction(data.data()))
+      else
+        dispatch(succesFunction(null))
+    }).catch(function (error) {
+      dispatch(errorFunction(error))
+    })
+
+
+export const fetchGetCollectionFirestore = (collection, succesFunction, errorFunction) => dispatch =>
+  firestore.collection(collection).get()
+    .then(function (querySnapshot) {
+      querySnapshot.docs.map(function (doc) {
+        dispatch(succesFunction(doc.data()))
+      })
+    })
+    .catch(function (error) {
+      dispatch(errorFunction(error))
+    })

@@ -13,7 +13,7 @@ export default (isWeb) =>
                 EN DIRECTO
             </Text>
             <Text style={styles().textDescription}>
-                ISRAEL
+                CITRIKA FM
             </Text>
         </View>
         <Image
@@ -21,7 +21,7 @@ export default (isWeb) =>
             source={{ uri: 'https://media.giphy.com/media/XMaB779YCmP9m/giphy.gif' }} />
         <Image
             style={styles().image}
-            source={require('../../../assets/images/provisional/icon.png')} />
+            source={require('../../../assets/images/icon_white.png')} />
     </View>
 
 const styles = (isWeb) => StyleSheet.create({
@@ -52,7 +52,7 @@ const styles = (isWeb) => StyleSheet.create({
     },
     image: {
         width: '20%',
-        height: '80%',
+        height: '50%',
         resizeMode: 'contain',
     },
     imageSoundGif: {

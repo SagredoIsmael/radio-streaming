@@ -3,16 +3,16 @@ import { compose } from 'redux'
 import Events from '../../screens/Events'
 import { connectNavigation } from "../HOC/connectNavigation"
 import { connectPlatform } from '../HOC/connectPlatform'
-
-
+import { getData, getError, isLoading } from '../selectors/blog'
 const mapStateToProps = state => {
   return {
-
+    data: getData(state),
+    error: getError(state),
   }
 }
 
 const mapDispatchToProps = {
-
+  
 }
 
 export default compose(

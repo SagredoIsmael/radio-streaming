@@ -45,7 +45,6 @@ export default ({ navigation }) =>
                     onPress={() => navigation.navigate(drawerItem.label)}
                     labelStyle={styles.labelDrawer}
                     style={styles.drawerItem}
-        
                     {...drawerItem} />
             )}
         </View>
@@ -62,19 +61,21 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.black,
         justifyContent: 'space-between',
-        padding: '7%'
+        padding: '7%',
+        paddingTop:'20%',
     },
     labelDrawer: {
         color: colors.white,
-        fontSize: sizeNormalize(18)
+        fontSize: sizeNormalize(16)
     },
     drawerItem: {
         borderBottomColor: colors.primary,
         borderBottomWidth: 1,
-        paddingTop:'8%',
+        marginTop:'5%',
     },
     socialDrawerItem: {
-        margin:'15%',
+        marginLeft:'5%',
+        marginRight:'5%',
         flexDirection: 'row',
         justifyContent: 'space-between'
     }

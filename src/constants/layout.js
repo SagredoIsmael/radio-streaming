@@ -45,3 +45,11 @@ export const StatusBarHeight = Platform.select({
   android: StatusBar.currentHeight,
   default: 0
 })
+
+export const adaptImageWidth = (dimension, isWeb) => {
+  const MAX_IMAGE_WIDTH = isWeb ? 1200 : 350
+
+  for (var i = 0; i < 10; i+= 0.1)
+    if (dimension.width / i < MAX_IMAGE_WIDTH)
+      return { width: dimension.width / i, height: dimension.height / i }
+}
