@@ -26,7 +26,7 @@ const styles = (isWeb) => StyleSheet.create({
             width: '100%',
             height: '100%',
             resizeMode: 'contain',
-            marginLeft: isWeb? '200%' : 0
+            marginLeft: '5%'
         }
     })
 

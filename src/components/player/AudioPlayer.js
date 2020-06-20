@@ -68,24 +68,19 @@ export default ({ navigate, isWeb }) => {
     }
 
     return (
-        <ImageBackground
-            source={isWeb ? require("../../../assets/images/background.jpg") : require("../../../assets/images/backgroundMobile/1.jpg")}
-            style={styles.container} >
-            <TouchableOpacity
-                underlayColor={colors.black}
-                style={styles.iconTouchable}
-                onPress={() => playAudio()}
-            >
-                <MaterialIcons
-                    name={playing
-                        ? ICON_PAUSE_BUTTON
-                        : ICON_PLAY_BUTTON
-                    }
-                    size={isWeb? sizeNormalize(80):  sizeNormalize(50)}
-                    color={colors.primary}
-                />
-            </TouchableOpacity>
-        </ImageBackground>
+        <TouchableOpacity
+        underlayColor={colors.black}
+        style={styles.iconTouchable}
+        onPress={() => playAudio()}>
+        <MaterialIcons
+            name={playing
+                ? ICON_PAUSE_BUTTON
+                : ICON_PLAY_BUTTON
+            }
+            size={isWeb? sizeNormalize(80):  sizeNormalize(50)}
+            color={colors.primary}
+        />
+    </TouchableOpacity>
     )
 }
 
