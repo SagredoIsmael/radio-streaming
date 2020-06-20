@@ -3,7 +3,7 @@ import { StyleSheet, ImageBackground } from 'react-native'
 
 export default ({ navigation, isWeb }) =>
   <ImageBackground
-    source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/backgroundMobile/3.jpg")}
+    source={isWeb ? require("../../assets/images/backgroundWeb/2.png") : require("../../assets/images/backgroundMobile/2.jpg")}
     style={styles.container} >
   </ImageBackground >
 

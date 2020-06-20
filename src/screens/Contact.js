@@ -6,7 +6,7 @@ import { Linking } from 'react-native'
 
 export default ({ navigate, isWeb }) =>
   <ImageBackground
-    source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/backgroundMobile/5.jpg")}
+    source={isWeb ? require("../../assets/images/backgroundWeb/5.png") : require("../../assets/images/backgroundMobile/5.jpg")}
     style={styles().container} >
     <View style={styles(isWeb).infoWrapper}>
       <Text style={styles().textTitle}>

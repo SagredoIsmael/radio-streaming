@@ -6,7 +6,7 @@ export default ({ navigate, isWeb, fetchDataBlog, data, error, isLoading }) => {
   useEffect(() => fetchDataBlog(), [])
   return (
     <ImageBackground
-      source={isWeb ? require("../../assets/images/background.jpg") : require("../../assets/images/backgroundMobile/4.jpg")}
+      source={isWeb ? require("../../assets/images/backgroundWeb/3.jpg") : require("../../assets/images/backgroundMobile/3.jpg")}
       style={styles.container} >
       {!isLoading &&
         <List isWeb={isWeb} data={data} isMain/>}
