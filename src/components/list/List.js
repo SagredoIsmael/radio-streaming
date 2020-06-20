@@ -1,24 +1,34 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { StyleSheet, FlatList } from 'react-native'
 import Item from './Item'
+import Publi from './Publi'
 
-const List = ({ data, isWeb, isMain }) =>
-  <FlatList
-    style={styles.flatList}
-    data={data}
-    renderItem={({ item }) => {
-      if (item.only_in == 'eventos' && isMain) return null
-      if (item.only_in == 'inicio' && !isMain) return null
-      return <Item item={item} isWeb={isWeb} />
-    }}
-    keyExtractor={item => item.title}
-  />
+const List = ({ blogs, publi, isWeb }) => {
+  const itemsList = blogs.slice(0)
+  itemsList.splice(0, 0, publi)
+
+  return (
+    <FlatList
+      style={styles.flatList}
+      data={itemsList}
+      renderItem={({ item }) => {
+        if (!item) return null
+        if (item.only_in == 'eventos' && publi) return null
+        if (item.only_in == 'inicio' && !publi) return null
+        if (Array.isArray(item) && item.length > 0) return <Publi publi={item} />
+        return <Item item={item} isWeb={isWeb} />
+      }}
+      keyExtractor={(item, index) => index}
+    />
+  )
+}
+
 
 
 const styles = StyleSheet.create({
   flatList: {
     width: '100%'
-  },
+  }
 })
 
 

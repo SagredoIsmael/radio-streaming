@@ -4,18 +4,25 @@ import Main from '../../screens/Main'
 import { connectNavigation } from "../HOC/connectNavigation"
 import { connectPlatform } from '../HOC/connectPlatform'
 import { fetchDataBlog } from '../actions/blog'
-import { getData, getError, isLoading } from '../selectors/blog'
+import { fetchDataPubli } from '../actions/publi'
+import { getBlogs, getBlogError, isBlogLoading } from '../selectors/blog'
+import { getPubli, getPubliError, isPubliLoading } from '../selectors/publi'
+
 
 const mapStateToProps = state => {
   return {
-    data: getData(state),
-    error: getError(state),
-    isLoading: isLoading(state)
+    blogs: getBlogs(state),
+    blogError: getBlogError(state),
+    isBlogLoading: isBlogLoading(state),
+    publi: getPubli(state),
+    publiError: getPubliError(state),
+    isPubliLoading: isPubliLoading(state)
   }
 }
 
 const mapDispatchToProps = {
-  fetchDataBlog
+  fetchDataBlog,
+  fetchDataPubli
 }
 
 export default compose(

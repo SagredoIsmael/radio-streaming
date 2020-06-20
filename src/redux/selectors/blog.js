@@ -3,17 +3,17 @@ import pipe from 'lodash/fp/pipe'
 
 const getBlog = get('blog')
 
-export const getData = pipe(
+export const getBlogs = pipe(
     getBlog,
     get('data')
 )
 
-export const getError = pipe(
+export const getBlogError = pipe(
     getBlog,
     get('error')
 )
 
-export const isLoading = pipe(
+export const isBlogLoading = pipe(
     getBlog,
     get('isLoading')
 )

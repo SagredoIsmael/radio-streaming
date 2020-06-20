@@ -39,6 +39,6 @@ const headerCommonsOptions = {
 
 const headerOptionsMain = (navigation) => (
     {
-        headerLeft: () => <Icon color={colors.primary} onPress={navigation.toggleDrawer} name={'md-menu'} style={{marginLeft: sizeNormalize(20)}} size={30}/>,
+        headerLeft: () => <Icon color={colors.primary} onPress={navigation.toggleDrawer} name={'md-menu'} style={{marginLeft: sizeNormalize(20)}} size={30} colorHovered={colors.white}/>,
         headerTitle: props => <Header {...props} />   }
 )
