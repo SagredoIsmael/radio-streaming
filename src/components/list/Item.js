@@ -80,10 +80,10 @@ const ItemStyle = (width, height, isWeb) => StyleSheet.create({
         marginTop: '0%'
     },
     logo: {
-        width: sizeNormalize(24),
-        height: sizeNormalize(24),
+        width: sizeNormalize(30),
+        height: sizeNormalize(30),
         resizeMode: 'contain',
         alignSelf: 'flex-start',
-        marginTop: sizeNormalize(-20),
+        marginTop: sizeNormalize(-40),
     },
 })

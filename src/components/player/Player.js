@@ -13,7 +13,7 @@ export default (isWeb) =>
                 EN DIRECTO
             </Text>
             <Text style={styles().textDescription}>
-                ISRAEL
+                CITRIKA FM
             </Text>
         </View>
         <Image
@@ -52,7 +52,7 @@ const styles = (isWeb) => StyleSheet.create({
     },
     image: {
         width: '20%',
-        height: '80%',
+        height: '50%',
         resizeMode: 'contain',
     },
     imageSoundGif: {
