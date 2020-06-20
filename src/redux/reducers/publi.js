@@ -16,19 +16,10 @@ export default (state = initialUIState, action = {}) => {
             }
 
         case SET_DATA_PUBLI:
-            const publi = {
-                image: { uri: action.item.photo },
-                title: action.item.title ? action.item.title : '',
-                imageWidth: '100%',
-                imageHeight: '100%',
-                subtitle: action.item.subTitle ? action.item.subTitle : '',
-                titleColor: action.item.titleColor ? action.item.titleColor : '#fff',
-                subtitleColor: action.item.subTitleColor ? action.item.subTitleColor : '#fff'
-            }
             return {
                 ...state,
                 isLoading: false,
-                data: [...state.data, publi]
+                data: [...state.data, action.item.photo]
             }
 
         case ERROR_DATA_PUBLI:
