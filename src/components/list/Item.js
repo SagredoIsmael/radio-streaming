@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Image, Text, View } from 'react-native'
 import { sizeNormalize, adaptImageWidth } from '../../constants/layout'
 import colors from '../../constants/colors'
+import ReadMore from 'react-native-read-more-text'
 
 export default ({ item, isWeb }) => {
     const [dimension, setDimension] = useState(null)
@@ -26,12 +27,32 @@ export default ({ item, isWeb }) => {
                     source={require('../../../assets/images/icon_red.png')} />
                 <Text style={ItemStyle().title}>{item.title}</Text>
                 <Text style={ItemStyle().subTitle}>{item.subtitle}</Text>
-                <Text style={ItemStyle().subTitle}>{item.little_description}</Text>
+                <ReadMore
+                    numberOfLines={3}
+                    renderTruncatedFooter={renderTruncatedFooter}
+                    renderRevealedFooter={renderRevealedFooter}>
+                    <Text style={ItemStyle().description}>{item.description}</Text>
+                </ReadMore>
             </View>
         )
     return null
 }
 
+const renderTruncatedFooter = (handlePress) => {
+    return (
+        <Text style={ItemStyle().revealedFooter} onPress={handlePress}>
+            Leer más
+        </Text>
+    )
+}
+
+const renderRevealedFooter = (handlePress) => {
+    return (
+        <Text style={ItemStyle().revealedFooter} onPress={handlePress}>
+            Ocultar
+        </Text>
+    )
+}
 
 
 const ItemStyle = (width, height, isWeb) => StyleSheet.create({
@@ -68,15 +89,15 @@ const ItemStyle = (width, height, isWeb) => StyleSheet.create({
     },
     subTitle: {
         color: colors.white,
-        fontSize: sizeNormalize(15),
+        fontSize: sizeNormalize(18),
         margin: '3%',
         marginTop: '0%',
         fontWeight: "bold",
     },
     description: {
         color: colors.white,
-        fontSize: sizeNormalize(12),
-        margin: '3%',
+        fontSize: sizeNormalize(15),
+        margin: 20,
         marginTop: '0%'
     },
     logo: {
@@ -86,4 +107,8 @@ const ItemStyle = (width, height, isWeb) => StyleSheet.create({
         alignSelf: 'flex-start',
         marginTop: sizeNormalize(-40),
     },
+    revealedFooter:{
+        color: colors.primary,
+        margin: '2%'
+    }
 })

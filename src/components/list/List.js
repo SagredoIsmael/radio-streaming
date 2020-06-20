@@ -7,10 +7,8 @@ const List = ({ data, isWeb, isMain }) =>
     style={styles.flatList}
     data={data}
     renderItem={({ item }) => {
-      if (item.only_in){
-        if (item.only_in == 'eventos' && isMain) return null
-        if (item.only_in == 'inicio' && !isMain) return null
-      }
+      if (item.only_in == 'eventos' && isMain) return null
+      if (item.only_in == 'inicio' && !isMain) return null
       return <Item item={item} isWeb={isWeb} />
     }}
     keyExtractor={item => item.title}
