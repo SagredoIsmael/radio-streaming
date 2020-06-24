@@ -6,8 +6,8 @@ import ImageSlider from 'react-native-image-slider'
 
 export default ({ publi }) =>
     <View style={styles.container}>
-        <View style={styles.content1}>
-            <Text style={styles.contentText}>Citrika FM colaborando con</Text>
+        <View style={styles.textContent}>
+            <Text style={styles.contentText}>Colaboraciones</Text>
         </View>
         <ImageSlider
             autoPlayWithInterval={6000}
@@ -43,7 +43,7 @@ export default ({ publi }) =>
                 </View>
             )}
         />
-        <View style={styles.content2}>
+        <View style={styles.textContent}>
             <Text style={styles.contentText}>Contenido adicional</Text>
         </View>
     </View>
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
         width: '70%',
         alignSelf: 'center',
     },
-    content1: {
+    textContent: {
         width: '100%',
         height: 50,
         marginBottom: 10,
@@ -63,17 +63,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    content2: {
-        width: '100%',
-        height: 100,
-        marginTop: 10,
-        backgroundColor: '#000',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
     contentText: {
         color: colors.primary,
-        fontSize: sizeNormalize(26),
+        fontSize: sizeNormalize(28),
         margin: '3%',
         fontWeight: "bold",
     },

@@ -29,7 +29,7 @@ const Settings = () => {
 
 const soundObject = new Audio.Sound()
 
-const URL_STREAMING = 'http://live.radiovoz.es/mp3/stream_coruna.mp3'
+const URL_STREAMING = 'https://liveradio.com.es:8000/stream'
 
 
 export default ({ navigate, isWeb }) => {
