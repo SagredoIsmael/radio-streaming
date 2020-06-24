@@ -25,8 +25,14 @@ export const sizeNormalize = (size) => {
       return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2
 
     case 'web':
-      const webSize = size / 15
-      return webSize.toString() + 'rem'
+      if (!isStraitScreen){
+        const webSize = size / 15
+        return webSize.toString() + 'rem'
+      }else{
+        const webSize = size / 25
+        return webSize.toString() + 'rem'
+      }
+     
   }
 }
 

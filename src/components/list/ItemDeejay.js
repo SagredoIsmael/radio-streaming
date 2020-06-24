@@ -1,58 +1,68 @@
 import React from 'react'
-import { StyleSheet, Image, Text, View } from 'react-native'
+import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native'
 import { sizeNormalize } from '../../constants/layout'
 import colors from '../../constants/colors'
+import Icon from '../UI/Icon'
+import constants from '../../constants/fetch'
 
 
-export default ({ item, isWeb }) => 
+export default ({ item, isWeb }) =>
     <View
-        style={ItemStyle().container}>
+        style={styles(isWeb).container}>
         <Image
-            style={ItemStyle(isWeb).image}
+            style={styles(isWeb).image}
             source={{ uri: item.photo }} />
-        <Text style={ItemStyle().title}>{item.title}</Text>
-        <Text style={ItemStyle().subTitle}>{item.subtitle}</Text>
+        <View style={styles(isWeb).infoWrapper}>
+            <Text style={styles().textTitle}>
+                {item.name}
+            </Text>
+            <View style={styles(isWeb).socialDrawerItem}>
+                {item.instagram && <Icon onPress={() => window.open(item.instagram, '_blank')} name={'logo-instagram'} color={colors.white} colorHovered={colors.primary} size={50} />}
+                {item.facebook && <Icon onPress={() => window.open(item.facebook, '_blank')} name={'logo-facebook'} color={colors.white} colorHovered={colors.primary} size={50} />}
+                {item.twitter && <Icon onPress={() => window.open(item.twitter, '_blank')} name={'logo-twitter'} color={colors.white} colorHovered={colors.primary} size={50} /> }
+            </View>
+        </View>
     </View>
 
 
 
-const ItemStyle = (isWeb) => StyleSheet.create({
+const styles = (isWeb) => StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.black,
-        borderColor: colors.white,
-        borderLeftWidth: 1,
-        borderRightWidth: 1,
-        borderBottomWidth: 1,
-        borderRadius: 10,
-        margin: '5%',
-        width: '20%',
-        justifyContent: 'center',
+        width: isWeb? '60%' : '90%',
         alignItems: 'center',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        margin: '2%',
+        flexDirection: 'row'
     },
     image: {
-        width: '20%',
-        height: sizeNormalize(30),
-        resizeMode: 'contain',
+        width: '40%',
+        height: '80%',
+        resizeMode: 'stretch',
         borderColor: colors.white,
-        borderWidth: isWeb ? 1 : 0,
-        borderLeftWidth: 1,
-        borderRightWidth: 1,
-        borderTopLeftRadius: isWeb ? 10 : 5,
-        borderTopRightRadius: isWeb ? 10 : 5,
-    },
-    title: {
-        color: colors.primary,
-        fontSize: sizeNormalize(26),
+        borderWidth: 1,
         margin: '3%',
-        fontWeight: "bold",
     },
-    subTitle: {
+    infoWrapper: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    socialDrawerItem: {
+        flexDirection: 'row',
+        marginBottom: '30%',
+        width: '30%',
+        justifyContent: 'space-between'
+    },
+    textTitle: {
         color: colors.white,
-        fontSize: sizeNormalize(18),
+        fontSize: sizeNormalize(40),
         fontWeight: "bold",
-        margin: '2%',
-        marginTop: '0%',
+        textAlign: 'center',
+        borderBottomWidth: 1,
+        borderColor: colors.lightBlack,
+        margin: '5%',
+        marginTop: '30%',
     },
 })
