@@ -4,14 +4,14 @@ import { sizeNormalize, adaptImageWidth, } from '../../constants/layout'
 import colors from '../../constants/colors'
 import ImageSlider from 'react-native-image-slider'
 
-export default ({ publi }) =>
+export default ({ item }) =>
     <View style={styles.container}>
         <View style={styles.textContent}>
             <Text style={styles.contentText}>Colaboraciones</Text>
         </View>
         <ImageSlider
             autoPlayWithInterval={6000}
-            images={publi}
+            images={item}
             onPress={({ index }) => console.log('press index:', index)}
             customSlide={({ index, item, style, width }) => (
                 <View
@@ -26,7 +26,7 @@ export default ({ publi }) =>
             )}
             customButtons={(position, move) => (
                 <View style={styles.buttons}>
-                    {publi.map((image, index) => {
+                    {item.map((image, index) => {
                         return (
                             <TouchableHighlight
                                 key={index}

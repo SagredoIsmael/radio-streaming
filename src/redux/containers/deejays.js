@@ -3,16 +3,17 @@ import { compose } from 'redux'
 import Deejays from '../../screens/Deejays'
 import { connectNavigation } from "../HOC/connectNavigation"
 import { connectPlatform } from '../HOC/connectPlatform'
-
+import { getData, getError } from '../selectors/deejays'
 
 const mapStateToProps = state => {
   return {
-
+    deejays: getData(state),
+    error: getError(state),
   }
 }
 
 const mapDispatchToProps = {
-
+  
 }
 
 export default compose(
