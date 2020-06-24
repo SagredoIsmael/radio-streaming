@@ -31,3 +31,8 @@ export const ERROR_DATA_BLOG = 'ERROR_DATA_BLOG'
 export const GET_DATA_PUBLI = 'GET_DATA_PUBLI'
 export const SET_DATA_PUBLI = 'SET_DATA_PUBLI'
 export const ERROR_DATA_PUBLI = 'ERROR_DATA_PUBLI'
+
+/*Actions deejays*/
+export const GET_DATA_DJS = 'GET_DATA_DJS'
+export const SET_DATA_DJS = 'SET_DATA_DJS'
+export const ERROR_DATA_DJS = 'ERROR_DATA_DJS'
