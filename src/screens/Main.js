@@ -7,16 +7,16 @@ export default ({
   isWeb,
   fetchDataBlog,
   fetchDataPubli,
+  fetchDataDjs,
   blogs,
   blogError,
   isBlogLoading,
   publi,
-  publiError,
-  isPubliLoading
 }) => {
   useEffect(() => {
     fetchDataBlog()
     fetchDataPubli()
+    fetchDataDjs()
   }, [])
   return (
     <ImageBackground
