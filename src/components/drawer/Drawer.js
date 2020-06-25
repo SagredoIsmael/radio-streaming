@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { DrawerItem } from '@react-navigation/drawer'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Linking } from 'react-native'
 import map from 'lodash/map'
 import colors from '../../constants/colors'
 import { sizeNormalize } from '../../constants/layout'
@@ -54,9 +54,9 @@ export default ({ navigation }) =>
             )}
         </View>
         <View style={styles().socialDrawerItem}>
-            <Icon onPress={() => window.open(constants.INSTAGRAM, '_blank')} name={'logo-instagram'} color={colors.white} colorHovered={colors.primary} size={30} />
-            <Icon onPress={() => window.open(constants.FACEBOOK, '_blank')} name={'logo-facebook'} color={colors.white} colorHovered={colors.primary} size={30} />
-            <Icon onPress={() => window.open(constants.TWITTER, '_blank')} name={'logo-twitter'} color={colors.white} colorHovered={colors.primary} size={30} />
+            <Icon onPress={() => Linking.openURL(constants.INSTAGRAM)} name={'logo-instagram'} color={colors.white} colorHovered={colors.primary} size={30} />
+            <Icon onPress={() => Linking.openURL(constants.FACEBOOK)} name={'logo-facebook'} color={colors.white} colorHovered={colors.primary} size={30} />
+            <Icon onPress={() => Linking.openURL(constants.TWITTER)} name={'logo-twitter'} color={colors.white} colorHovered={colors.primary} size={30} />
         </View>
     </View>
 

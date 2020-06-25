@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Image, Text, View, TouchableOpacity, Linking } from 'react-native'
 import { sizeNormalize } from '../../constants/layout'
 import colors from '../../constants/colors'
 import Icon from '../UI/Icon'
@@ -13,13 +13,16 @@ export default ({ item, isWeb }) =>
             style={styles(isWeb).image}
             source={{ uri: item.photo }} />
         <View style={styles(isWeb).infoWrapper}>
-            <Text style={styles().textTitle}>
-                {item.name}
-            </Text>
+            <TouchableOpacity
+                onPress={() => item.web && Linking.openURL(item.web)}>
+                <Text style={styles(isWeb).textTitle}>
+                    {item.name}
+                </Text>
+            </TouchableOpacity>
             <View style={styles(isWeb).socialDrawerItem}>
-                {item.instagram && <Icon onPress={() => window.open(item.instagram, '_blank')} name={'logo-instagram'} color={colors.white} colorHovered={colors.primary} size={50} />}
-                {item.facebook && <Icon onPress={() => window.open(item.facebook, '_blank')} name={'logo-facebook'} color={colors.white} colorHovered={colors.primary} size={50} />}
-                {item.twitter && <Icon onPress={() => window.open(item.twitter, '_blank')} name={'logo-twitter'} color={colors.white} colorHovered={colors.primary} size={50} /> }
+                {item.instagram && <Icon onPress={() => Linking.openURL(item.instagram)} name={'logo-instagram'} color={colors.white} colorHovered={colors.primary} size={30} />}
+                {item.facebook && <Icon onPress={() => Linking.openURL(item.facebook)} name={'logo-facebook'} color={colors.white} colorHovered={colors.primary} size={30} />}
+                {item.twitter && <Icon onPress={() => Linking.openURL(item.twitter)} name={'logo-twitter'} color={colors.white} colorHovered={colors.primary} size={30} />}
             </View>
         </View>
     </View>
@@ -30,7 +33,7 @@ const styles = (isWeb) => StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.black,
-        width: isWeb? '60%' : '90%',
+        width: isWeb ? '60%' : '90%',
         alignItems: 'center',
         alignSelf: 'center',
         margin: '2%',
@@ -38,7 +41,7 @@ const styles = (isWeb) => StyleSheet.create({
     },
     image: {
         width: '40%',
-        height: '80%',
+        height: isWeb ? sizeNormalize(250) : sizeNormalize(120),
         resizeMode: 'stretch',
         borderColor: colors.white,
         borderWidth: 1,
@@ -51,18 +54,18 @@ const styles = (isWeb) => StyleSheet.create({
     },
     socialDrawerItem: {
         flexDirection: 'row',
-        marginBottom: '30%',
+        marginBottom: isWeb ? '30%' : '20%',
         width: '30%',
         justifyContent: 'space-between'
     },
     textTitle: {
         color: colors.white,
-        fontSize: sizeNormalize(40),
+        fontSize: isWeb ? sizeNormalize(40) : sizeNormalize(20),
         fontWeight: "bold",
         textAlign: 'center',
         borderBottomWidth: 1,
         borderColor: colors.lightBlack,
         margin: '5%',
-        marginTop: '30%',
+        marginTop: isWeb ? '30%' : '20%',
     },
 })

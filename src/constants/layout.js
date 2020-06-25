@@ -11,9 +11,10 @@ export default {
   isSmallDevice: width < 375,
 }
 
-export const isStraitScreen = width < 1000
+export const isStraitScreen = width < 800
 
 const scale = width / 320
+const scaleWeb = width / 20000
 
 export const sizeNormalize = (size) => {
   const newSize = size * scale
@@ -22,15 +23,13 @@ export const sizeNormalize = (size) => {
       return Math.round(PixelRatio.roundToNearestPixel(newSize))
 
     case 'android':
-      return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2
+      return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 4
 
     case 'web':
       if (!isStraitScreen){
-        const webSize = size / 15
-        return webSize.toString() + 'rem'
+        return (scaleWeb * size).toString() + 'rem'
       }else{
-        const webSize = size / 25
-        return webSize.toString() + 'rem'
+        return (scaleWeb * size * 3).toString() + 'rem'
       }
      
   }

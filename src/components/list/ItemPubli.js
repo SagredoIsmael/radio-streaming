@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     },
     contentText: {
         color: colors.primary,
-        fontSize: sizeNormalize(28),
+        fontSize: sizeNormalize(20),
         margin: '3%',
         fontWeight: "bold",
     },
