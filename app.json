@@ -9,7 +9,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/iconApp.png",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -18,7 +18,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.sagredoismael.citrikafm",
+      "bundleIdentifier": "com.citrika.fm",
       "buildNumber": "1.0.0",
       "infoPlist": {
         "UIBackgroundModes": [
@@ -27,7 +27,7 @@
       }
     },
     "android": {
-      "package": "com.yourcompany.yourappname",
+      "package": "com.citrika.fm",
       "versionCode": 1
     },
     "description": "",
