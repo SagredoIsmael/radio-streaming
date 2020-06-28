@@ -1,15 +1,7 @@
 import { Dimensions, Platform, PixelRatio, StatusBar } from 'react-native'
 
-const width = Dimensions.get('window').width
-const height = Dimensions.get('window').height
-
-export default {
-  window: {
-    width,
-    height,
-  },
-  isSmallDevice: width < 375,
-}
+export const width = Dimensions.get('window').width
+export const height = Dimensions.get('window').height
 
 export const isStraitScreen = width < 800
 

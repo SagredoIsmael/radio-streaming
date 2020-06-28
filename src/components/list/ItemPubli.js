@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native'
-import { sizeNormalize, adaptImageWidth, } from '../../constants/layout'
+import { sizeNormalize, } from '../../constants/layout'
 import colors from '../../constants/colors'
 import ImageSlider from 'react-native-image-slider'
 
@@ -83,7 +83,6 @@ const styles = StyleSheet.create({
         width: 15,
         height: 15,
         opacity: 0.9,
-        color: colors.primary,
         fontWeight: "bold",
         fontSize: sizeNormalize(26),
         alignItems: 'center',

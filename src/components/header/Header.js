@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { TouchableOpacity, StyleSheet, Image } from 'react-native'
-import { sizeNormalize } from '../../constants/layout'
+import { sizeNormalize, width } from '../../constants/layout'
 import colors from '../../constants/colors'
 import { connectPlatform } from '../../redux/HOC/connectPlatform'
 import { connectNavigation } from "../../redux/HOC/connectNavigation"
@@ -19,14 +19,14 @@ const Header = ({navigate, isWeb }) =>
 
 const styles = (isWeb) => StyleSheet.create({
         container: {
-            width: isWeb? '20rem' : sizeNormalize(200),
-            height: isWeb? '25rem' : sizeNormalize(90),
+            width: isWeb? width : '100%',
         },
         image: {
-            width: '100%',
-            height: '100%',
+            alignSelf: isWeb? 'center' : 'flex-start',
+            width: sizeNormalize(200),
+            height: sizeNormalize(90),
             resizeMode: 'contain',
-            marginLeft: '5%'
+            marginLeft: isWeb? '-10%' : '5%'
         }
     })
 
