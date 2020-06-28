@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "citrikafm",
-    "slug": "citrikafm",
+    "name": "CitrikaFm",
+    "slug": "CitrikaFm",
     "platforms": [
       "ios",
       "android",
@@ -9,7 +9,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/iconApp.png",
+    "icon": "./assets/images/iconApp.jpg",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
