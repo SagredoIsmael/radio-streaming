@@ -9,7 +9,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/iconApp.jpg",
+    "icon": "./assets/images/iconApp.png",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
