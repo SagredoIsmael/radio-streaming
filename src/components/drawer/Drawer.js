@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { DrawerItem } from '@react-navigation/drawer'
-import { StyleSheet, View, Linking } from 'react-native'
+import { StyleSheet, View, Linking, Image } from 'react-native'
 import map from 'lodash/map'
 import colors from '../../constants/colors'
 import { sizeNormalize } from '../../constants/layout'
@@ -10,7 +10,7 @@ import constants from '../../constants/fetch'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import Feather from 'react-native-vector-icons/Feather'
 import { Hoverable } from 'react-native-web-hooks'
-
+import { connectPlatform } from '../../redux/HOC/connectPlatform'
 
 const { MAIN, EVENTS, DEEJAYS, CONTACT, LEGAL } = screens
 
@@ -37,22 +37,31 @@ const drawerItems = [
     }
 ]
 
-export default ({ navigation }) =>
+const Drawer = ({ navigation, isMobile }) =>
     <View style={styles().drawerContainer}>
         <View>
             {map(drawerItems, drawerItem =>
                 <Hoverable>
                     {isHovered => (
                         <DrawerItem
-                        key={drawerItem.label}
-                        onPress={() => navigation.navigate(drawerItem.label)}
-                        labelStyle={styles().labelDrawer}
-                        style={styles(isHovered).drawerItem}
-                        {...drawerItem} />
+                            key={drawerItem.label}
+                            onPress={() => navigation.navigate(drawerItem.label)}
+                            labelStyle={styles().labelDrawer}
+                            style={styles(isHovered).drawerItem}
+                            {...drawerItem} />
                     )}
                 </Hoverable>
             )}
         </View>
+        {!isMobile && <View style={styles().storesWrapper}>
+            <Image
+                style={styles().image}
+                source={require('../../../assets/images/googlePlay.png')} />
+            <Image
+                style={styles().image}
+                source={require('../../../assets/images/appleStore.png')} />
+        </View>
+        }
         <View style={styles().socialDrawerItem}>
             <Icon onPress={() => Linking.openURL(constants.INSTAGRAM)} name={'logo-instagram'} color={colors.white} colorHovered={colors.primary} size={30} />
             <Icon onPress={() => Linking.openURL(constants.FACEBOOK)} name={'logo-facebook'} color={colors.white} colorHovered={colors.primary} size={30} />
@@ -77,12 +86,31 @@ const styles = (isHovered) => StyleSheet.create({
         borderBottomColor: colors.primary,
         borderBottomWidth: 1,
         marginTop: '5%',
-        backgroundColor: isHovered? colors.primary : colors.black
+        backgroundColor: isHovered ? colors.primary : colors.black
     },
     socialDrawerItem: {
         marginLeft: '5%',
         marginRight: '5%',
         flexDirection: 'row',
         justifyContent: 'space-between'
-    }
+    },
+    storesWrapper: {
+        margin: '3%',
+        marginLeft: '5%',
+        marginRight: '5%',
+        width: '90%',
+        height: '30%',
+        justifyContent: 'space-between'
+        
+    },
+    image: {
+        width: '95%',
+        height: '45%',
+        resizeMode: 'contain',
+        borderColor: colors.primary,
+        borderWidth: 1,
+        borderRadius: 10,
+    },
 })
+
+export default connectPlatform(Drawer)
