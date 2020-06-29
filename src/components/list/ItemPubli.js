@@ -1,73 +1,52 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native'
-import { sizeNormalize, } from '../../constants/layout'
+import { sizeNormalize, width, height } from '../../constants/layout'
 import colors from '../../constants/colors'
-import ImageSlider from 'react-native-image-slider'
+import Carousel from 'react-native-banner-carousel'
 
-export default ({ item }) =>
+const renderPage = (image, index) =>
+    <View key={index}>
+        <Image style={styles.customImage} source={{ uri: image }} />
+    </View>
+
+
+export default ({ item }) => 
     <View style={styles.container}>
         <View style={styles.textContent}>
-            <Text style={styles.contentText}>Colaboraciones</Text>
+            <Text style={styles.text}>Colaboraciones</Text>
         </View>
-        <ImageSlider
-            autoPlayWithInterval={6000}
-            images={item}
-            onPress={({ index }) => console.log('press index:', index)}
-            customSlide={({ index, item, style, width }) => (
-                <View
-                    key={index}
-                    style={[
-                        style,
-                        styles.customSlide,
-                    ]}
-                >
-                    <Image source={{ uri: item }} style={styles.customImage} />
-                </View>
-            )}
-            customButtons={(position, move) => (
-                <View style={styles.buttons}>
-                    {item.map((image, index) => {
-                        return (
-                            <TouchableHighlight
-                                key={index}
-                                underlayColor="#ccc"
-                                onPress={() => move(index)}
-                                style={styles.button}
-                            >
-                                <Text style={position === index && styles.buttonSelected}>
-                                    {index + 1}
-                                </Text>
-                            </TouchableHighlight>
-                        );
-                    })}
-                </View>
-            )}
-        />
-        <View style={styles.textContent}>
-            <Text style={styles.contentText}>Contenido adicional</Text>
-        </View>
+        <Carousel
+            autoplay
+            autoplayTimeout={5000}
+            loop
+            index={0}
+            pageSize={width/1.2}
+        >
+            {item.map((image, index) => renderPage(image, index))}
+        </Carousel>
     </View>
+
+
 
 
 const styles = StyleSheet.create({
     container: {
-        height: sizeNormalize(500),
-        width: '70%',
+        flex:1,
         alignSelf: 'center',
+        alignContent: 'center',
+        justifyContent: 'center'
     },
     textContent: {
         width: '100%',
-        height: 50,
-        marginBottom: 10,
-        backgroundColor: '#000',
-        justifyContent: 'center',
-        alignItems: 'center',
+        height: '4%',
+        backgroundColor: colors.black
     },
-    contentText: {
+    text: {
         color: colors.primary,
         fontSize: sizeNormalize(20),
         margin: '3%',
         fontWeight: "bold",
+        textAlign: 'center'
     },
     buttons: {
         zIndex: 1,
@@ -88,33 +67,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    buttonSelected: {
-        opacity: 1,
-        color: 'red',
-    },
-    customSlide: {
-        flex:1,
-        alignItems: 'center',
-        justifyContent: 'center',
-       
-    },
     customImage: {
-        width: '100%',
-        height: '100%',
+        width: width/1.2,
+        height: height/2,
         borderRadius: 10,
     },
-})
-
-
-const styles1 = StyleSheet.create({
-    carouselWrapper: {
-        height: sizeNormalize(500),
-        width: '60%',
-        alignSelf: 'center',
-        margin: '3%',
-    },
-    customImage: {
-        height: sizeNormalize(500),
-        width: '60%',
-    }
 })
