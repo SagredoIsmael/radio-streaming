@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { StyleSheet, Image, Text, View } from 'react-native'
 import { sizeNormalize, adaptImageWidth } from '../../constants/layout'
 import colors from '../../constants/colors'
-import ReadMore from 'react-native-read-more-text'
+import ViewMoreText from 'react-native-view-more-text';
 
 export default ({ item, isWeb }) => {
     const [dimension, setDimension] = useState(null)
@@ -28,12 +28,14 @@ export default ({ item, isWeb }) => {
                 <Text style={ItemStyle().title}>{item.title}</Text>
                 <Text style={ItemStyle().subTitle}>{item.subtitle}</Text>
                 <View style={ItemStyle().textWrapper}>
-                    <ReadMore
+                    <ViewMoreText
                         numberOfLines={3}
-                        renderTruncatedFooter={renderTruncatedFooter}
-                        renderRevealedFooter={renderRevealedFooter}>
+                        renderViewMore={renderTruncatedFooter}
+                        renderViewLess={renderRevealedFooter}
+                        
+                    >
                         <Text style={ItemStyle().description}>{item.description}</Text>
-                    </ReadMore>
+                    </ViewMoreText>
                 </View>
             </View>
         )
@@ -43,7 +45,7 @@ export default ({ item, isWeb }) => {
 const renderTruncatedFooter = (handlePress) => {
     return (
         <Text style={ItemStyle().revealedFooter} onPress={handlePress}>
-            Leer más
+            Leer más..
         </Text>
     )
 }
@@ -99,6 +101,7 @@ const ItemStyle = (width, height, isWeb) => StyleSheet.create({
     textWrapper: {
         margin: '3%',
         marginTop: '0%',
+        marginBottom: '2%'
     },
     description: {
         color: colors.white,
