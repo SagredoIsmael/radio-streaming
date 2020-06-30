@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import {
     StyleSheet,
     TouchableOpacity,
-    ImageBackground,
 } from "react-native"
 import { Audio } from "expo-av"
 import { MaterialIcons } from "@expo/vector-icons"
@@ -11,31 +10,28 @@ import colors from "../../constants/colors"
 
 const ICON_PLAY_BUTTON = 'play-circle-outline'
 const ICON_PAUSE_BUTTON = 'pause-circle-outline'
-const ICON_STOP_BUTTON = 'stop'
-const ICON_FORWARD_BUTTON = 'forward'
-const ICON_BACK_BUTTON = 'backward'
-const ICON_MUTED_BUTTON = 'volume-mute'
-const ICON_UNMUTED_BUTTON = 'volume-up'
 
 const Settings = () => {
     Audio.setAudioModeAsync({
-        playsInSilentModeIOS: true,
+        allowsRecordingIOS: false,
         staysActiveInBackground: true,
         interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
+        playsInSilentModeIOS: true,
         shouldDuckAndroid: true,
         interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
-    })
+        playThroughEarpieceAndroid: false
+      })
 }
 
 const soundObject = new Audio.Sound()
 
 const URL_STREAMING = 'https://liveradio.com.es:8000/stream'
-
+//const URL_STREAMING = 'https://s3.amazonaws.com/exp-us-standard/audio/playlist-example/Comfort_Fit_-_03_-_Sorry.mp3'
 
 export default ({ navigate, isWeb }) => {
     useEffect(() => {
         Settings(),
-            initSoundObject()
+        initSoundObject()
     }, [])
     const [playing, setPlaying] = useState(false)
 
@@ -56,7 +52,7 @@ export default ({ navigate, isWeb }) => {
     const playAudio = async () => {
         try {
             if (playing) {
-                await soundObject.pauseAsync()
+                await soundObject.stopAsync()
                 setPlaying(false)
             } else {
                 await soundObject.playAsync()
@@ -69,18 +65,18 @@ export default ({ navigate, isWeb }) => {
 
     return (
         <TouchableOpacity
-        underlayColor={colors.black}
-        style={styles.iconTouchable}
-        onPress={() => playAudio()}>
-        <MaterialIcons
-            name={playing
-                ? ICON_PAUSE_BUTTON
-                : ICON_PLAY_BUTTON
-            }
-            size={isWeb? sizeNormalize(80):  sizeNormalize(50)}
-            color={colors.primary}
-        />
-    </TouchableOpacity>
+            underlayColor={colors.black}
+            style={styles.iconTouchable}
+            onPress={() => playAudio()}>
+            <MaterialIcons
+                name={playing
+                    ? ICON_PAUSE_BUTTON
+                    : ICON_PLAY_BUTTON
+                }
+                size={isWeb ? sizeNormalize(80) : sizeNormalize(50)}
+                color={colors.primary}
+            />
+        </TouchableOpacity>
     )
 }
 
