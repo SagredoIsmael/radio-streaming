@@ -63,9 +63,9 @@ const Drawer = ({ navigation, isMobile }) =>
         </View>
         }
         <View style={styles().socialDrawerItem}>
-            <Icon onPress={() => Linking.openURL(constants.INSTAGRAM)} name={'logo-instagram'} color={colors.white} colorHovered={colors.primary} size={30} />
-            <Icon onPress={() => Linking.openURL(constants.FACEBOOK)} name={'logo-facebook'} color={colors.white} colorHovered={colors.primary} size={30} />
-            <Icon onPress={() => Linking.openURL(constants.TWITTER)} name={'logo-twitter'} color={colors.white} colorHovered={colors.primary} size={30} />
+            <Icon onPress={() => isMobile? Linking.openURL(constants.INSTAGRAM) : window.open(constants.INSTAGRAM)} name={'logo-instagram'} color={colors.white} colorHovered={colors.primary} size={30} />
+            <Icon onPress={() => isMobile? Linking.openURL(constants.FACEBOOK) : window.open(constants.FACEBOOK)} name={'logo-facebook'} color={colors.white} colorHovered={colors.primary} size={30} />
+            <Icon onPress={() => isMobile? Linking.openURL(constants.TWITTER) : window.open(constants.TWITTER)} name={'logo-twitter'} color={colors.white} colorHovered={colors.primary} size={30} />
         </View>
     </View>
 
