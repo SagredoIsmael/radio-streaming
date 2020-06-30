@@ -20,7 +20,7 @@ const getItemsList = (blogs, publi, deejays) => {
   }
 }
 
-const List = ({ blogs, publi, deejays, isWeb }) => {
+const List = ({ blogs, publi, deejays, isWeb, isMobile }) => {
 
   return (
     <FlatList
@@ -30,7 +30,7 @@ const List = ({ blogs, publi, deejays, isWeb }) => {
         if (!item) return null
         if (item.only_in == 'eventos' && publi) return null
         if (item.only_in == 'inicio' && !publi) return null
-        if (deejays) return <ItemDeejay item={item} isWeb={isWeb}/>
+        if (deejays) return <ItemDeejay item={item} isWeb={isWeb} isMobile={isMobile}/>
         if (Array.isArray(item) && item.length > 0) return <ItemPubli item={item} />
         return <Item item={item} isWeb={isWeb} />
       }}
