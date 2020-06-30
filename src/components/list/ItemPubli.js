@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native'
+import { StyleSheet, Text, View, Image } from 'react-native'
 import { sizeNormalize, width, height } from '../../constants/layout'
 import colors from '../../constants/colors'
 import Carousel from 'react-native-banner-carousel'
@@ -12,9 +12,6 @@ const renderPage = (image, index) =>
 
 export default ({ item }) => 
     <View style={styles.container}>
-        <View style={styles.textContent}>
-            <Text style={styles.text}>Colaboraciones</Text>
-        </View>
         <Carousel
             autoplay
             autoplayTimeout={5000}
@@ -35,18 +32,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         alignContent: 'center',
         justifyContent: 'center'
-    },
-    textContent: {
-        width: '100%',
-        height: '4%',
-        backgroundColor: colors.black
-    },
-    text: {
-        color: colors.primary,
-        fontSize: sizeNormalize(20),
-        margin: '3%',
-        fontWeight: "bold",
-        textAlign: 'center'
     },
     buttons: {
         zIndex: 1,
