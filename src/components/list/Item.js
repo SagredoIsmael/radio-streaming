@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { StyleSheet, Image, Text, View } from 'react-native'
 import { sizeNormalize, adaptImageWidth } from '../../constants/layout'
 import colors from '../../constants/colors'
-import ViewMoreText from 'react-native-view-more-text';
+import ViewMoreText from 'react-native-view-more-text'
 
 export default ({ item, isWeb }) => {
     const [dimension, setDimension] = useState(null)
