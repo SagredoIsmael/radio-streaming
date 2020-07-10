@@ -90,6 +90,7 @@ const ItemStyle = (width, height, isWeb) => StyleSheet.create({
         fontSize: sizeNormalize(26),
         margin: '3%',
         fontWeight: "bold",
+        textAlign: 'justify'
     },
     subTitle: {
         color: colors.white,
@@ -97,6 +98,7 @@ const ItemStyle = (width, height, isWeb) => StyleSheet.create({
         fontWeight: "bold",
         margin: '2%',
         marginTop: '0%',
+        textAlign: 'justify'
     },
     textWrapper: {
         margin: '3%',
@@ -106,6 +108,7 @@ const ItemStyle = (width, height, isWeb) => StyleSheet.create({
     description: {
         color: colors.white,
         fontSize: sizeNormalize(15),
+        textAlign: 'justify'
     },
     logo: {
         width: sizeNormalize(30),
