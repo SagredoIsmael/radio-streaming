@@ -17,13 +17,11 @@ export default ({ item }) =>
             autoplayTimeout={5000}
             loop
             index={0}
-            pageSize={width/1.4}
+            pageSize={width/1.1}
         >
             {item.map((image, index) => renderPage(image, index))}
         </Carousel>
     </View>
-
-
 
 
 const styles = StyleSheet.create({
@@ -53,8 +51,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     customImage: {
-        width: width/1.4,
-        height: height/1.5,
+        width: width/1.1,
+        height: height/1.3,
         borderRadius: 10,
         resizeMode: 'contain'
     },
