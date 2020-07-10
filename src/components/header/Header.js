@@ -19,7 +19,7 @@ const Header = ({navigate, isWeb }) =>
 
 const styles = (isWeb) => StyleSheet.create({
         container: {
-            width: isWeb? width : '100%',
+            width: width,
         },
         image: {
             alignSelf: isWeb? 'center' : 'flex-start',
