@@ -35,18 +35,16 @@ const styles = (isWeb) => StyleSheet.create({
     },
     infoUser: {
         flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
         margin:'2%',
-        marginTop: '4%',
-        marginBottom: '4%'
     },
     textTitle: {
-        flex: 1,
         color: colors.white,
-        fontSize: sizeNormalize(20),
+        fontSize: sizeNormalize(16),
         fontWeight: "bold",
     },
     textDescription: {
-        flex: 1,
         color: colors.primary,
         fontSize: sizeNormalize(16),
     },
