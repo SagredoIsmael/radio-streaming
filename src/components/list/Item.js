@@ -23,7 +23,7 @@ export default ({ item, isWeb }) => {
                     style={ItemStyle(finalDimension.width, finalDimension.height, isWeb).image}
                     source={{ uri: item.photo }} />
                 <Image
-                    style={ItemStyle(finalDimension.width).logo}
+                    style={ItemStyle(finalDimension.width, null, isWeb).logo}
                     source={require('../../../assets/images/icon_red.png')} />
                 <Text style={ItemStyle().title}>{item.title}</Text>
                 <Text style={ItemStyle().subTitle}>{item.subtitle}</Text>
@@ -115,7 +115,7 @@ const ItemStyle = (width, height, isWeb) => StyleSheet.create({
         height: sizeNormalize(30),
         resizeMode: 'contain',
         alignSelf: 'flex-start',
-        marginTop: sizeNormalize(-40),
+        marginTop: isWeb? sizeNormalize(-35) : sizeNormalize(-25),
     },
     revealedFooter: {
         color: colors.primary,
