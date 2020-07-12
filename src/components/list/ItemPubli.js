@@ -4,14 +4,14 @@ import { sizeNormalize, width, height } from '../../constants/layout'
 import colors from '../../constants/colors'
 import Carousel from 'react-native-banner-carousel'
 
-const renderPage = (image, index) =>
+const renderPage = (image, index, isWeb) =>
     <View key={index}>
-        <Image style={styles.customImage} source={{ uri: image }} />
+        <Image style={styles(isWeb).customImage} source={{ uri: image }} />
     </View>
 
 
-export default ({ item }) => 
-    <View style={styles.container}>
+export default ({ item, isWeb }) => 
+    <View style={styles(isWeb).container}>
         <Carousel
             autoplay
             autoplayTimeout={5000}
@@ -19,40 +19,21 @@ export default ({ item }) =>
             index={0}
             pageSize={width/1.1}
         >
-            {item.map((image, index) => renderPage(image, index))}
+            {item.map((image, index) => renderPage(image, index, isWeb))}
         </Carousel>
     </View>
 
 
-const styles = StyleSheet.create({
+const styles = (isWeb) => StyleSheet.create({
     container: {
         flex:1,
         alignSelf: 'center',
         alignContent: 'center',
         justifyContent: 'center'
     },
-    buttons: {
-        zIndex: 1,
-        height: 15,
-        marginTop: -25,
-        marginBottom: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'row',
-    },
-    button: {
-        margin: 3,
-        width: 15,
-        height: 15,
-        opacity: 0.9,
-        fontWeight: "bold",
-        fontSize: sizeNormalize(26),
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     customImage: {
         width: width/1.1,
-        height: height/1.3,
+        height: isWeb? height/1.3 : height/2,
         borderRadius: 10,
         resizeMode: 'contain'
     },

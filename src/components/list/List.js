@@ -31,7 +31,7 @@ const List = ({ blogs, publi, deejays, isWeb, isMobile }) => {
         if (item.only_in == 'eventos' && publi) return null
         if (item.only_in == 'inicio' && !publi) return null
         if (deejays) return <ItemDeejay item={item} isWeb={isWeb} isMobile={isMobile}/>
-        if (Array.isArray(item) && item.length > 0) return <ItemPubli item={item} />
+        if (Array.isArray(item) && item.length > 0) return <ItemPubli item={item} isWeb={isWeb}/>
         return <Item item={item} isWeb={isWeb} />
       }}
       keyExtractor={(item, index) => index}
