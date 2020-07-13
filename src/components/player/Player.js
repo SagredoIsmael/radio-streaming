@@ -5,24 +5,34 @@ import colors from '../../constants/colors'
 import AudioPlayer from './AudioPlayer'
 
 
-export default (isWeb) =>
-    <View style={styles().container}>
-        <AudioPlayer />
-        <View style={styles().infoUser}>
-            <Text style={styles().textTitle}>
-                EN DIRECTO
+export default (isWeb) => {
+    let AudioPlayerMobile
+    if (!isWeb) AudioPlayerMobile = require('./AudioPlayerMobile')
+
+    return (
+        <View style={styles().container}>
+            {isWeb ?
+                <AudioPlayer />
+                :    
+                <AudioPlayerMobile />    
+        }
+            <View style={styles().infoUser}>
+                <Text style={styles().textTitle}>
+                    EN DIRECTO
             </Text>
-            <Text style={styles().textDescription}>
-                CITRIKA FM
+                <Text style={styles().textDescription}>
+                    CITRIKA FM
             </Text>
+            </View>
+            <Image
+                style={styles().imageSoundGif}
+                source={{ uri: 'https://media.giphy.com/media/XMaB779YCmP9m/giphy.gif' }} />
+            <Image
+                style={styles().image}
+                source={require('../../../assets/images/icon_white.png')} />
         </View>
-        <Image
-            style={styles().imageSoundGif}
-            source={{ uri: 'https://media.giphy.com/media/XMaB779YCmP9m/giphy.gif' }} />
-        <Image
-            style={styles().image}
-            source={require('../../../assets/images/icon_white.png')} />
-    </View>
+    )
+}
 
 const styles = (isWeb) => StyleSheet.create({
     container: {
@@ -31,13 +41,13 @@ const styles = (isWeb) => StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.black,
-        paddingStart:'2%'
+        paddingStart: '2%'
     },
     infoUser: {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        margin:'2%',
+        margin: '2%',
     },
     textTitle: {
         color: colors.white,

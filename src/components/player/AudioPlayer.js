@@ -20,15 +20,13 @@ const Settings = () => {
         shouldDuckAndroid: true,
         interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
         playThroughEarpieceAndroid: false,
-        playsInBackgroundModeIOS: true,
-        playsInBackgroundModeAndroid: true,
       })
 }
 
 const soundObject = new Audio.Sound()
 
-const URL_STREAMING = 'https://liveradio.com.es:8000/stream'
-//const URL_STREAMING = 'https://s3.amazonaws.com/exp-us-standard/audio/playlist-example/Comfort_Fit_-_03_-_Sorry.mp3'
+//const URL_STREAMING = 'https://liveradio.com.es:8000/stream'
+const URL_STREAMING = 'https://s3.amazonaws.com/exp-us-standard/audio/playlist-example/Comfort_Fit_-_03_-_Sorry.mp3'
 
 export default ({ navigate, isWeb }) => {
     useEffect(() => {
