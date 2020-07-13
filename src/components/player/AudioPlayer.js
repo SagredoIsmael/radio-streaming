@@ -19,7 +19,9 @@ const Settings = () => {
         playsInSilentModeIOS: true,
         shouldDuckAndroid: true,
         interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
-        playThroughEarpieceAndroid: false
+        playThroughEarpieceAndroid: false,
+        playsInBackgroundModeIOS: true,
+        playsInBackgroundModeAndroid: true,
       })
 }
 
