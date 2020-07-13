@@ -4,10 +4,9 @@ import { sizeNormalize } from '../../constants/layout'
 import colors from '../../constants/colors'
 import AudioPlayer from './AudioPlayer'
 
-
-export default (isWeb) => {
-    let AudioPlayerMobile
-    if (!isWeb) AudioPlayerMobile = require('./AudioPlayerMobile')
+const Player = ({isWeb}) => {
+     let AudioPlayerMobile
+     if (!isWeb) AudioPlayerMobile = require('./AudioPlayerMobile').default
 
     return (
         <View style={styles().container}>
@@ -70,3 +69,5 @@ const styles = (isWeb) => StyleSheet.create({
         marginLeft: '2%'
     }
 })
+
+export default Player
