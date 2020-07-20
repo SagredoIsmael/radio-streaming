@@ -1,61 +1,47 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, Image, Text, View } from 'react-native'
-import { sizeNormalize, adaptImageWidth } from '../../constants/layout'
+import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native'
+import { sizeNormalize, adaptImageWidth, width, height } from '../../constants/layout'
 import colors from '../../constants/colors'
-import ViewMoreText from 'react-native-view-more-text'
+
 
 export default ({ item, isWeb }) => {
     const [dimension, setDimension] = useState(null)
+    const [numberLines, setnumberLines] = useState(3)
+
     useEffect(() => {
-        Image.getSize(item.photo, (width, height) => { setDimension({ width, height }) })
+        item.photo && Image.getSize(item.photo, (width, height) => {
+            setDimension(adaptImageWidth({ width, height }, isWeb))
+        }, (error) => {
+            console.error(`Couldn't get the image size: ${error.message}`)
+            if (!isWeb)
+                setDimension(adaptImageWidth({ width: width / 1.2, height: height / 4 }))
+            else
+                setDimension(adaptImageWidth({ width: width / 1.5, height: height / 2 }))
+        })
     }, [])
 
-    const finalDimension = dimension ?
-        adaptImageWidth(dimension, isWeb)
-        :
-        null
+    const isDescriptionExpanded = numberLines === 0
 
-    if (finalDimension)
+    if (dimension)
         return (
             <View
-                style={ItemStyle(finalDimension.width).container}>
+                style={ItemStyle(dimension.width).container}>
                 <Image
-                    style={ItemStyle(finalDimension.width, finalDimension.height, isWeb).image}
+                    style={ItemStyle(dimension.width, dimension.height, isWeb).image}
                     source={{ uri: item.photo }} />
                 <Image
-                    style={ItemStyle(finalDimension.width, null, isWeb).logo}
+                    style={ItemStyle(dimension.width, null, isWeb).logo}
                     source={require('../../../assets/images/icon_red.png')} />
                 <Text style={ItemStyle().title}>{item.title}</Text>
                 <Text style={ItemStyle().subTitle}>{item.subtitle}</Text>
-                <View style={ItemStyle().textWrapper}>
-                    <ViewMoreText
-                        numberOfLines={3}
-                        renderViewMore={renderTruncatedFooter}
-                        renderViewLess={renderRevealedFooter}
-                        
-                    >
-                        <Text style={ItemStyle().description}>{item.description}</Text>
-                    </ViewMoreText>
-                </View>
+                <Text numberOfLines={numberLines} ellipsizeMode='tail' style={ItemStyle().description}>{item.description}</Text>
+                <TouchableOpacity
+                    onPress={() => setnumberLines(isDescriptionExpanded ? 3 : 0)}>
+                    <Text style={ItemStyle(null, null, isWeb).readMore}>{isDescriptionExpanded ? 'Leer menos' : 'Leer más'}</Text>
+                </TouchableOpacity>
             </View>
         )
     return null
-}
-
-const renderTruncatedFooter = (handlePress) => {
-    return (
-        <Text style={ItemStyle().revealedFooter} onPress={handlePress}>
-            Leer más..
-        </Text>
-    )
-}
-
-const renderRevealedFooter = (handlePress) => {
-    return (
-        <Text style={ItemStyle().revealedFooter} onPress={handlePress}>
-            Ocultar
-        </Text>
-    )
 }
 
 
@@ -97,25 +83,34 @@ const ItemStyle = (width, height, isWeb) => StyleSheet.create({
         fontSize: sizeNormalize(18),
         fontWeight: "bold",
         margin: '2%',
+        marginLeft: '3%',
+        marginRight: '3%',
         marginTop: '0%',
         textAlign: 'justify'
-    },
-    textWrapper: {
-        margin: '3%',
-        marginTop: '0%',
-        marginBottom: '2%'
     },
     description: {
         color: colors.white,
         fontSize: sizeNormalize(15),
-        textAlign: 'justify'
+        textAlign: 'justify',
+        marginLeft: '3%',
+        marginRight: '3%',
+        marginBottom: '1%'
+    },
+    readMore: {
+        width: '100%',
+        color: colors.primary,
+        fontSize: sizeNormalize(16),
+        marginLeft: '3%',
+        fontWeight: "bold",
+        textAlign: 'left',
+        marginBottom: isWeb ? '2%' : '0%'
     },
     logo: {
         width: sizeNormalize(30),
         height: sizeNormalize(30),
         resizeMode: 'contain',
         alignSelf: 'flex-start',
-        marginTop: isWeb? sizeNormalize(-35) : sizeNormalize(-25),
+        marginTop: isWeb ? sizeNormalize(-35) : sizeNormalize(-25),
     },
     revealedFooter: {
         color: colors.primary,

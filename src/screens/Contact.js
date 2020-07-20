@@ -6,7 +6,7 @@ import { Linking } from 'react-native'
 
 export default ({ navigate, isWeb }) =>
   <ImageBackground
-    source={isWeb ? require("../../assets/images/backgroundWeb/5.png") : require("../../assets/images/backgroundMobile/5.jpg")}
+    source={isWeb ? require("../../assets/images/backgroundWeb/3.jpg") : require("../../assets/images/backgroundMobile/3.jpg")}
     style={styles().container} >
     <View style={styles(isWeb).infoWrapper}>
       <Text style={styles().textTitle}>
@@ -39,7 +39,8 @@ const styles = (isWeb) => StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'black'
   },
   infoWrapper: {
     width: isWeb ? '30%' : '80%',

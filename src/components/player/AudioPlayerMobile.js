@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import {
     StyleSheet,
     TouchableOpacity
@@ -6,7 +6,7 @@ import {
 import { MaterialIcons } from "@expo/vector-icons"
 import { sizeNormalize } from "../../constants/layout"
 import colors from "../../constants/colors"
-import TrackPlayer, { usePlaybackState } from "react-native-track-player"
+import TrackPlayer from "react-native-track-player"
 
 const ICON_PLAY_BUTTON = 'play-circle-outline'
 const ICON_PAUSE_BUTTON = 'pause-circle-outline'
@@ -45,7 +45,8 @@ export default class Validator extends React.Component {
             id: 'CitrikaFM',
             url: URL_STREAMING,
             title: 'CitrikaFM',
-            artwork: require('../../../assets/images/icon.png')
+            artist: 'CitrikaFM',
+            artwork: require('../../../assets/images/icon_small.png'),
         })
     }
 

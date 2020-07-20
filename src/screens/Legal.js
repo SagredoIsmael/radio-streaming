@@ -5,7 +5,7 @@ import colors from '../constants/colors'
 
 export default ({ navigate, isWeb }) =>
   <ImageBackground
-    source={isWeb ? require("../../assets/images/backgroundWeb/2.png") : require("../../assets/images/backgroundMobile/2.jpg")}
+    source={isWeb ? require("../../assets/images/backgroundWeb/3.jpg") : require("../../assets/images/backgroundMobile/3.jpg")}
     style={styles().container} >
     <ScrollView style={styles().scrollView} >
       <Text style={styles().textTitle}>
@@ -33,6 +33,7 @@ export default ({ navigate, isWeb }) =>
 const styles = (isWeb) => StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'black'
   },
   scrollView: {
     flex: 1,

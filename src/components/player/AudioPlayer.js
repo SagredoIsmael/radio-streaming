@@ -25,8 +25,8 @@ const Settings = () => {
 
 const soundObject = new Audio.Sound()
 
-//const URL_STREAMING = 'https://liveradio.com.es:8000/stream'
-const URL_STREAMING = 'https://s3.amazonaws.com/exp-us-standard/audio/playlist-example/Comfort_Fit_-_03_-_Sorry.mp3'
+const URL_STREAMING = 'https://liveradio.com.es:8000/stream'
+//const URL_STREAMING = 'https://s3.amazonaws.com/exp-us-standard/audio/playlist-example/Comfort_Fit_-_03_-_Sorry.mp3'
 
 export default ({ navigate, isWeb }) => {
     useEffect(() => {

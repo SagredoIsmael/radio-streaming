@@ -4,13 +4,13 @@ import { sizeNormalize } from '../../constants/layout'
 import colors from '../../constants/colors'
 import AudioPlayer from './AudioPlayer'
 
-const Player = ({isWeb}) => {
+const Player = ({isMobile}) => {
      let AudioPlayerMobile
-     if (!isWeb) AudioPlayerMobile = require('./AudioPlayerMobile').default
+     if (isMobile) AudioPlayerMobile = require('./AudioPlayerMobile').default
 
     return (
         <View style={styles().container}>
-            {isWeb ?
+            {!isMobile ?
                 <AudioPlayer />
                 :    
                 <AudioPlayerMobile />    
@@ -33,7 +33,7 @@ const Player = ({isWeb}) => {
     )
 }
 
-const styles = (isWeb) => StyleSheet.create({
+const styles = () => StyleSheet.create({
     container: {
         flex: 1 / 8,
         flexDirection: 'row',

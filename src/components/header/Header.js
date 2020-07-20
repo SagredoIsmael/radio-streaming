@@ -7,26 +7,22 @@ import { connectNavigation } from "../../redux/HOC/connectNavigation"
 import { screens } from '../../constants/navigation'
 
 
-const Header = ({navigate, isWeb }) =>
+const Header = ({navigate, isWeb, isIOS }) =>
     <TouchableOpacity
-        style={styles(isWeb).container}
         onPress={() => navigate(screens.MAIN)}>
         <Image
-            style={styles(isWeb).image}
+            style={styles(isWeb, isIOS).image}
             source={require('../../../assets/images/citrika_white.png')} />
     </TouchableOpacity>
 
 
-const styles = (isWeb) => StyleSheet.create({
-        container: {
-            width: width,
-        },
+const styles = (isWeb, isIOS) => StyleSheet.create({
         image: {
-            alignSelf: isWeb? 'center' : 'flex-start',
+            alignSelf: 'center',
             width: sizeNormalize(200),
             height: sizeNormalize(90),
             resizeMode: 'contain',
-            marginLeft: isWeb? '-10%' : '5%'
+            marginLeft: isIOS? '10%' : '-5%',
         }
     })
 
