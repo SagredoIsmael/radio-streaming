@@ -5,7 +5,6 @@ import { connectNavigation } from "../HOC/connectNavigation"
 import { connectPlatform } from '../HOC/connectPlatform'
 import { fetchDataBlog } from '../actions/blog'
 import { fetchDataPubli } from '../actions/publi'
-import { fetchDataDjs } from '../actions/deejays'
 import { getBlogs, getBlogError, isBlogLoading } from '../selectors/blog'
 import { getPubli, getPubliError, isPubliLoading } from '../selectors/publi'
 
@@ -24,7 +23,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   fetchDataBlog,
   fetchDataPubli,
-  fetchDataDjs
 }
 
 export default compose(
