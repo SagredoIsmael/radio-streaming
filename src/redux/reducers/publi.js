@@ -19,7 +19,7 @@ export default (state = initialUIState, action = {}) => {
             return {
                 ...state,
                 isLoading: false,
-                data: [...state.data, action.item.photo]
+                data: [...state.data, action.item]
             }
 
         case ERROR_DATA_PUBLI:

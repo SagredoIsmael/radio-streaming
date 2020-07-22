@@ -13,7 +13,9 @@ const getItemsList = (blogs, publi, deejays) => {
 
     case publi != null:
       const publiWithBlogs = orderBy(blogs, 'order', 'asc').slice(0)
-      publiWithBlogs.splice(0, 0, publi)
+      const publiOrder = orderBy(publi, 'order', 'asc')
+      console.log({publiOrder})
+      publiWithBlogs.splice(0, 0, publiOrder)
       return publiWithBlogs
 
     default:
@@ -30,7 +32,7 @@ const List = ({ blogs, publi, deejays, isWeb, isMobile }) =>
       if (item.only_in == 'eventos' && publi) return null
       if (item.only_in == 'inicio' && !publi) return null
       if (deejays) return <ItemDeejay item={item} isWeb={isWeb} isMobile={isMobile} />
-      if (Array.isArray(item) && item.length > 0) return <ItemPubli item={item} isWeb={isWeb} />
+      if (Array.isArray(item) && item.length > 0) return <ItemPubli item={item} isWeb={isWeb} isMobile={isMobile} />
       return <Item item={item} isWeb={isWeb} />
     }}
     keyExtractor={(item, index) => index}
