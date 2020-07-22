@@ -13,7 +13,7 @@ export default ({ item, isWeb, isMobile }) =>
         <View style={styles(isWeb).infoWrapper}>
             <TouchableOpacity
                 style={styles(isWeb).textWrapper}
-                onPress={() => item.web && isMobile? Linking.openURL(item.web) : window.open(item.web)}>
+                onPress={() => item.web? isMobile? Linking.openURL(item.web) : window.open(item.web) : console.log('This dj hasnt web') }>
                 <Text style={styles(isWeb).textTitle}>
                     {item.name}
                 </Text>

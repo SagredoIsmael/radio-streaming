@@ -12,7 +12,7 @@ export default ({ item, isWeb }) => {
         item.photo && Image.getSize(item.photo, (width, height) => {
             setDimension(adaptImageWidth({ width, height }, isWeb))
         }, (error) => {
-            console.error(`Couldn't get the image size: ${error.message}`)
+            console.error(`Couldn't get the image size: ${error}`)
             if (!isWeb)
                 setDimension(adaptImageWidth({ width: width / 1.2, height: height / 4 }))
             else
