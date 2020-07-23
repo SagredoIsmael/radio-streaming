@@ -24,7 +24,6 @@ const styles = (isWeb, isIOS) => StyleSheet.create({
             alignItems: 'center'
         },
         image: {
-            
             width: width/2,
             height: sizeNormalize(50),
             resizeMode: 'contain',

@@ -5,6 +5,7 @@ import List from '../components/list/List'
 export default ({
   navigate,
   isWeb,
+  isMobile,
   fetchDataBlog,
   fetchDataPubli,
   blogs,
@@ -21,7 +22,7 @@ export default ({
       source={isWeb ? require("../../assets/images/backgroundWeb/3.jpg") : require("../../assets/images/backgroundMobile/3.jpg")}
       style={styles.container} >
       {!isBlogLoading &&
-        <List isWeb={isWeb} blogs={blogs} publi={publi} />}
+        <List isWeb={isWeb} blogs={blogs} publi={publi} isMobile={isMobile} />}
     </ImageBackground>
   )
 }

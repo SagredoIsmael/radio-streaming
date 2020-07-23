@@ -16,7 +16,7 @@ export default ({ item, isWeb, isMobile }) =>
     <View style={styles(isWeb).container}>
         <Carousel
             autoplay
-            autoplayTimeout={5000}
+            autoplayTimeout={7000}
             loop
             index={0}
             pageSize={width / 1.1}
@@ -31,12 +31,13 @@ const styles = (isWeb) => StyleSheet.create({
         flex: 1,
         alignSelf: 'center',
         alignContent: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center', 
+        marginTop: isWeb ? 0 : -height / 20
     },
     customImage: {
         width: width / 1.1,
         height: isWeb ? height / 1.3 : height / 2,
         borderRadius: 10,
-        resizeMode: 'contain'
+        resizeMode: 'contain',
     },
 })
