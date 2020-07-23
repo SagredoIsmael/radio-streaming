@@ -8,7 +8,8 @@ import { screens } from '../../constants/navigation'
 
 
 const Header = ({navigate, isWeb, isIOS }) =>
-    <TouchableOpacity
+    <TouchableOpacity             
+        style={styles(isWeb, isIOS).container}
         onPress={() => navigate(screens.MAIN)}>
         <Image
             style={styles(isWeb, isIOS).image}
@@ -17,12 +18,16 @@ const Header = ({navigate, isWeb, isIOS }) =>
 
 
 const styles = (isWeb, isIOS) => StyleSheet.create({
+        container: {
+            width: isWeb? width/1.1 : width/1.4,
+            justifyContent: 'center',
+            alignItems: 'center'
+        },
         image: {
-            alignSelf: 'center',
-            width: sizeNormalize(200),
-            height: sizeNormalize(90),
+            
+            width: width/2,
+            height: sizeNormalize(50),
             resizeMode: 'contain',
-            marginLeft: isIOS? '10%' : '-5%',
         }
     })
 
