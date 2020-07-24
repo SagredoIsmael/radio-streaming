@@ -1,13 +1,12 @@
 import * as React from 'react'
-import { TouchableOpacity, StyleSheet, Image } from 'react-native'
-import { sizeNormalize, width } from '../../constants/layout'
+import { TouchableOpacity, StyleSheet, Image, Dimensions } from 'react-native'
+import { sizeNormalize, width, height } from '../../constants/layout'
 import colors from '../../constants/colors'
 import { connectPlatform } from '../../redux/HOC/connectPlatform'
 import { connectNavigation } from "../../redux/HOC/connectNavigation"
 import { screens } from '../../constants/navigation'
 
-
-const Header = ({navigate, isWeb, isIOS }) =>
+const TopHeader = ({navigate, isWeb, isIOS }) =>
     <TouchableOpacity             
         style={styles(isWeb, isIOS).container}
         onPress={() => navigate(screens.MAIN)}>
@@ -25,9 +24,9 @@ const styles = (isWeb, isIOS) => StyleSheet.create({
         },
         image: {
             width: width/2,
-            height: sizeNormalize(50),
+            height: height/20,
             resizeMode: 'contain',
         }
     })
 
-    export default connectPlatform(connectNavigation(Header))
+    export default connectPlatform(connectNavigation(TopHeader))

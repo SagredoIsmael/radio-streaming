@@ -34,9 +34,10 @@ export default ({ item, isWeb }) => {
                     source={require('../../../assets/images/icon_red.png')} />
                 <Text style={ItemStyle().title}>{item.title}</Text>
                 <Text style={ItemStyle().subTitle}>{item.subtitle}</Text>
-                <Text numberOfLines={numberLines} ellipsizeMode='tail' style={ItemStyle().description}>{item.description}</Text>
                 <TouchableOpacity
-                    onPress={() => setnumberLines(isDescriptionExpanded ? 3 : 0)}>
+                    onPress={() => setnumberLines(isDescriptionExpanded ? 3 : 0)}
+                    style={ItemStyle().descriptionWrapper}>
+                    <Text numberOfLines={numberLines} ellipsizeMode='tail' style={ItemStyle().description}>{item.description}</Text>
                     <Text style={ItemStyle(null, null, isWeb).readMore}>{isDescriptionExpanded ? 'Leer menos' : 'Leer más'}</Text>
                 </TouchableOpacity>
             </View>
@@ -49,32 +50,26 @@ const ItemStyle = (width, height, isWeb) => StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.black,
-        borderColor: colors.white,
-        borderLeftWidth: 1,
-        borderRightWidth: 1,
-        borderBottomWidth: 1,
-        borderRadius: 10,
-        margin: '5%',
+        marginLeft: '5%',
+        marginRight: '5%',
+        marginBottom: '3%',
         width: width,
         justifyContent: 'center',
         alignItems: 'center',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        borderRadius: 10,
     },
     image: {
         width: width,
         height: height,
         resizeMode: 'contain',
-        borderColor: colors.white,
-        borderWidth: isWeb ? 1 : 0,
-        borderLeftWidth: 1,
-        borderRightWidth: 1,
         borderTopLeftRadius: isWeb ? 10 : 5,
         borderTopRightRadius: isWeb ? 10 : 5,
     },
     title: {
         color: colors.primary,
         fontSize: sizeNormalize(26),
-        margin: '3%',
+        margin: '1%',
         fontWeight: "bold",
         textAlign: 'justify'
     },
@@ -82,11 +77,15 @@ const ItemStyle = (width, height, isWeb) => StyleSheet.create({
         color: colors.white,
         fontSize: sizeNormalize(18),
         fontWeight: "bold",
-        margin: '2%',
+        marginBottom: '1%',
         marginLeft: '3%',
         marginRight: '3%',
-        marginTop: '0%',
         textAlign: 'justify'
+    },
+    descriptionWrapper: {
+        flex:1,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     description: {
         color: colors.white,
@@ -100,10 +99,9 @@ const ItemStyle = (width, height, isWeb) => StyleSheet.create({
         width: '100%',
         color: colors.primary,
         fontSize: sizeNormalize(16),
-        marginLeft: '3%',
         fontWeight: "bold",
-        textAlign: 'left',
-        marginBottom: isWeb ? '2%' : '0%'
+        marginBottom: isWeb ? '2%' : '0%',
+        textAlign: 'center'
     },
     logo: {
         width: sizeNormalize(30),
