@@ -28,18 +28,18 @@ export default ({ item, isWeb, isMobile }) =>
 
 const styles = (isWeb) => StyleSheet.create({
     container: {
+        width: isWeb ? width / 1.7 : width / 1.1,
         flex: 1,
         alignSelf: 'center',
         alignContent: 'center',
         justifyContent: 'center', 
-        marginTop: isWeb ? 0 : '-8%',
-        marginBottom: isWeb ? '2%' : '-2%',
+        marginBottom: '3%'
     },
     customImage: {
-        width: width / 1.1,
-        height: isWeb ? height / 1.3 : height / 2,
+        width: isWeb ? width / 1.7 : width / 1.1,
+        height: isWeb ? height / 1.5 : height / 3,
         borderRadius: 10,
-        resizeMode: 'contain',
+        resizeMode: 'stretch',
     },
 })
 

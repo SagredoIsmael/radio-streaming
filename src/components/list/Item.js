@@ -1,68 +1,54 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native'
-import { sizeNormalize, adaptImageWidth, width, height } from '../../constants/layout'
+import { sizeNormalize, width, height } from '../../constants/layout'
 import colors from '../../constants/colors'
 
 
 export default ({ item, isWeb }) => {
-    const [dimension, setDimension] = useState(null)
     const [numberLines, setnumberLines] = useState(3)
-
-    useEffect(() => {
-        item.photo && Image.getSize(item.photo, (width, height) => {
-            setDimension(adaptImageWidth({ width, height }, isWeb))
-        }, (error) => {
-            console.error(`Couldn't get the image size: ${error}`)
-            if (!isWeb)
-                setDimension(adaptImageWidth({ width: width / 1.2, height: height / 4 }))
-            else
-                setDimension(adaptImageWidth({ width: width / 1.5, height: height / 2 }))
-        })
-    }, [])
 
     const isDescriptionExpanded = numberLines === 0
 
-    if (dimension)
-        return (
-            <View
-                style={ItemStyle(dimension.width).container}>
-                <Image
-                    style={ItemStyle(dimension.width, dimension.height, isWeb).image}
-                    source={{ uri: item.photo }} />
-                <Image
-                    style={ItemStyle(dimension.width, null, isWeb).logo}
-                    source={require('../../../assets/images/icon_red.png')} />
-                <Text style={ItemStyle().title}>{item.title}</Text>
-                <Text style={ItemStyle().subTitle}>{item.subtitle}</Text>
-                <TouchableOpacity
-                    onPress={() => setnumberLines(isDescriptionExpanded ? 3 : 0)}
-                    style={ItemStyle().descriptionWrapper}>
-                    <Text numberOfLines={numberLines} ellipsizeMode='tail' style={ItemStyle().description}>{item.description}</Text>
-                    <Text style={ItemStyle(null, null, isWeb).readMore}>{isDescriptionExpanded ? 'Leer menos' : 'Leer más'}</Text>
-                </TouchableOpacity>
-            </View>
-        )
-    return null
+    return (
+        <View
+            style={ItemStyle(isWeb).container}>
+            <Image
+                style={ItemStyle(isWeb).image}
+                source={{ uri: item.photo }} />
+            <Image
+                style={ItemStyle(isWeb).logo}
+                source={require('../../../assets/images/icon_red.png')} />
+            <Text style={ItemStyle().title}>{item.title}</Text>
+            <Text style={ItemStyle().subTitle}>{item.subtitle}</Text>
+            <TouchableOpacity
+                onPress={() => setnumberLines(isDescriptionExpanded ? 3 : 0)}
+                style={ItemStyle().descriptionWrapper}>
+                <Text numberOfLines={numberLines} ellipsizeMode='tail' style={ItemStyle().description}>{item.description}</Text>
+                <Text style={ItemStyle(isWeb).readMore}>{isDescriptionExpanded ? 'Leer menos' : 'Leer más'}</Text>
+            </TouchableOpacity>
+        </View>
+    )
 }
 
 
-const ItemStyle = (width, height, isWeb) => StyleSheet.create({
+const ItemStyle = (isWeb) => StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.black,
         marginLeft: '5%',
         marginRight: '5%',
         marginBottom: '3%',
-        width: width,
+        width: isWeb ? width / 1.7 : width / 1.2,
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',
         borderRadius: 10,
     },
     image: {
-        width: width,
-        height: height,
-        resizeMode: 'contain',
+        width: isWeb ? width / 1.7 : width / 1.2,
+        height: isWeb ? height / 1.5 : height / 3,
+        borderRadius: 10,
+        resizeMode: 'stretch',
         borderTopLeftRadius: isWeb ? 10 : 5,
         borderTopRightRadius: isWeb ? 10 : 5,
     },
