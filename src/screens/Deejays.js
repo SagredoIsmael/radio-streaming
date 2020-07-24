@@ -4,7 +4,7 @@ import List from '../components/list/List'
 
 export default ({ navigate, isWeb, deejays, error, isMobile, fetchDataDjs }) => {
   useEffect(() => {
-    fetchDataDjs()
+    if (deejays.length == 0) fetchDataDjs()
   }, [])
   return (
     <ImageBackground

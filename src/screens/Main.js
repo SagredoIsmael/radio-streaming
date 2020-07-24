@@ -14,8 +14,8 @@ export default ({
   publi,
 }) => {
   useEffect(() => {
-    fetchDataBlog()
-    fetchDataPubli()
+    if (blogs.length == 0) fetchDataBlog()
+    if (publi.length == 0) fetchDataPubli()
   }, [])
   return (
     <ImageBackground

@@ -19,7 +19,7 @@ const Header = ({navigate, isWeb, isIOS }) =>
 
 const styles = (isWeb, isIOS) => StyleSheet.create({
         container: {
-            width: isWeb? width/1.1 : width/1.4,
+            width: isWeb? width/1.1 : width/1.5,
             justifyContent: 'center',
             alignItems: 'center'
         },

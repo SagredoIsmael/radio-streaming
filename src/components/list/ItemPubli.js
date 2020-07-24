@@ -51,6 +51,19 @@ import SliderEntry from '../UI/SliderEntry'
 import styles from '../UI/index.style'
 import colors from '../../constants/colors'
 
+
+const test = [
+    {
+        photo: 'https://i.imgur.com/UYiroysl.jpg'
+    },
+    {
+        photo: 'https://i.imgur.com/UPrs1EWl.jpg'
+    },
+    {
+        photo: 'https://i.imgur.com/MABUbpDl.jpg'
+    },
+]
+
 export default class itemPubli extends Component {
 
     constructor(props) {
@@ -70,7 +83,7 @@ export default class itemPubli extends Component {
         const { slider1ActiveSlide } = this.state
 
         return (
-            <View style={styles.exampleContainer}>
+            <View style={styles.container}>
                 <Carousel
                     ref={c => this._slider1Ref = c}
                     data={item}
@@ -80,20 +93,15 @@ export default class itemPubli extends Component {
                     firstItem={0}
                     inactiveSlideScale={0.94}
                     inactiveSlideOpacity={0.7}
-                    containerCustomStyle={styles.slider}
-                    contentContainerCustomStyle={styles.sliderContentContainer}
                     loop={true}
                     layout={'stack'}
-
                     autoplay={true}
-
                     autoplayInterval={7000}
                     onSnapToItem={(index) => this.setState({ slider1ActiveSlide: index })}
                 />
                 <Pagination
                     dotsLength={item.length}
                     activeDotIndex={slider1ActiveSlide}
-                    containerStyle={styles.paginationContainer}
                     dotColor={colors.white}
                     dotStyle={styles.paginationDot}
                     inactiveDotColor={colors.secondary}

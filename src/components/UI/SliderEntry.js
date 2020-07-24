@@ -34,7 +34,7 @@ export default class SliderEntry extends Component {
               activeOpacity={1}
               style={styles.slideInnerContainer}
               onPress={() => web? isMobile? Linking.openURL(web) : window.open(web) : console.log('This publi hasnt web') }>
-                <View style={styles.shadow} />
+                
                 <View style={[styles.imageContainer, {}]}>
                     { this.image }
                 </View>
@@ -43,3 +43,4 @@ export default class SliderEntry extends Component {
         );
     }
 }
+
