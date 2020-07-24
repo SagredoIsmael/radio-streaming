@@ -33,7 +33,8 @@ const styles = (isWeb) => StyleSheet.create({
         alignSelf: 'center',
         alignContent: 'center',
         justifyContent: 'center', 
-        marginBottom: '3%'
+        marginBottom: '3%',
+        marginTop: isWeb? 0 : '-1%'
     },
     customImage: {
         width: isWeb ? width / 1.7 : width / 1.1,
