@@ -14,7 +14,6 @@ const getItemsList = (blogs, publi, deejays) => {
     case publi != null:
       const publiWithBlogs = orderBy(blogs, 'order', 'asc').slice(0)
       const publiOrder = orderBy(publi, 'order', 'asc')
-      console.log({publiOrder})
       publiWithBlogs.splice(0, 0, publiOrder)
       return publiWithBlogs
 

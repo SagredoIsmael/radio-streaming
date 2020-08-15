@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { DrawerItem } from '@react-navigation/drawer'
-import { StyleSheet, View, Linking, Image } from 'react-native'
+import { StyleSheet, View, Linking, Image, TouchableOpacity } from 'react-native'
 import map from 'lodash/map'
 import colors from '../../constants/colors'
 import { sizeNormalize } from '../../constants/layout'
@@ -53,19 +53,28 @@ const Drawer = ({ navigation, isMobile }) =>
                 </Hoverable>
             )}
         </View>
-        {!isMobile && <View style={styles().storesWrapper}>
-            <Image
-                style={styles().image}
-                source={require('../../../assets/images/googlePlay.png')} />
-            <Image
-                style={styles().image}
-                source={require('../../../assets/images/appleStore.png')} />
-        </View>
+        {!isMobile &&
+            <View style={styles().storesWrapper}>
+                <TouchableOpacity
+                    style={styles().imageWrapper}
+                    onPress={() => window.open(constants.ANDROID)}>
+                    <Image
+                        style={styles().image}
+                        source={require('../../../assets/images/googlePlay.png')} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles().imageWrapper}
+                    onPress={() => window.open(constants.APPLE)}>
+                    <Image
+                        style={styles().image}
+                        source={require('../../../assets/images/appleStore.png')} />
+                </TouchableOpacity>
+            </View>
         }
         <View style={styles().socialDrawerItem}>
-            <Icon onPress={() => isMobile? Linking.openURL(constants.INSTAGRAM) : window.open(constants.INSTAGRAM)} name={'logo-instagram'} color={colors.white} colorHovered={colors.primary} size={30} />
-            <Icon onPress={() => isMobile? Linking.openURL(constants.FACEBOOK) : window.open(constants.FACEBOOK)} name={'logo-facebook'} color={colors.white} colorHovered={colors.primary} size={30} />
-            <Icon onPress={() => isMobile? Linking.openURL(constants.TWITTER) : window.open(constants.TWITTER)} name={'logo-twitter'} color={colors.white} colorHovered={colors.primary} size={30} />
+            <Icon onPress={() => isMobile ? Linking.openURL(constants.INSTAGRAM) : window.open(constants.INSTAGRAM)} name={'logo-instagram'} color={colors.white} colorHovered={colors.primary} size={30} />
+            <Icon onPress={() => isMobile ? Linking.openURL(constants.FACEBOOK) : window.open(constants.FACEBOOK)} name={'logo-facebook'} color={colors.white} colorHovered={colors.primary} size={30} />
+            <Icon onPress={() => isMobile ? Linking.openURL(constants.TWITTER) : window.open(constants.TWITTER)} name={'logo-twitter'} color={colors.white} colorHovered={colors.primary} size={30} />
         </View>
     </View>
 
@@ -101,11 +110,14 @@ const styles = (isHovered) => StyleSheet.create({
         width: '90%',
         height: '30%',
         justifyContent: 'space-between'
-        
+
     },
-    image: {
+    imageWrapper: {
         width: '95%',
         height: '45%',
+    },
+    image: {
+        flex:1,
         resizeMode: 'contain',
         borderColor: colors.primary,
         borderWidth: 1,
