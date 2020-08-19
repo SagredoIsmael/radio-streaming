@@ -33,7 +33,7 @@ export default ({ navigate, isWeb }) =>
 const styles = (isWeb) => StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black'
+    backgroundColor: 'black',
   },
   scrollView: {
     flex: 1,
