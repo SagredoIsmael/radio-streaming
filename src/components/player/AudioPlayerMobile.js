@@ -34,7 +34,6 @@ export default class Validator extends React.Component {
             capabilities: [
                 TrackPlayer.CAPABILITY_PLAY,
                 TrackPlayer.CAPABILITY_PAUSE,
-                TrackPlayer.CAPABILITY_STOP
             ],
             compactCapabilities: [
                 TrackPlayer.CAPABILITY_PLAY,
