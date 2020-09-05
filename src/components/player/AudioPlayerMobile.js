@@ -46,7 +46,7 @@ export default class Validator extends React.Component {
             url: URL_STREAMING,
             title: 'CitrikaFM',
             artist: 'CitrikaFM',
-            artwork: require('../../../assets/images/icon_small.png'),
+            artwork: require('../../../assets/images/player_mobile_icon.jpg'),
         })
     }
 
