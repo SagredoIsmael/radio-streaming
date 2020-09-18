@@ -7,9 +7,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import PlayerComponent from './src/redux/containers/player'
 import firebase from "firebase"
 import constant from './src/constants/fetch'
-import { Router, Route, Redirect, Switch } from "./src/navigation/router/react-router"
-
-import LegalScreen from './src/redux/containers/legal'
+import { Router, Route, Switch } from "./src/navigation/router/react-router"
 
 require("firebase/firestore")
 

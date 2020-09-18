@@ -10,7 +10,7 @@ import colors from '../constants/colors'
 import Icon from '../components/UI/Icon'
 import { sizeNormalize } from '../constants/layout'
 import Header from '../components/header/Header'
-import { useLocation } from 'react-router-dom'
+import { useLocation } from "./router/react-router"
 
 const Stack = createStackNavigator()
 
