@@ -3,5 +3,5 @@ export const screens = {
     EVENTS: 'Eventos',
     DEEJAYS: 'Deejays',
     CONTACT: 'Contacto',
-    LEGAL: 'Aviso Legal'
+    LEGAL: 'Legal'
 }

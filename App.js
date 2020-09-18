@@ -29,7 +29,7 @@ const App = () =>
         <PersistGate loading={null} persistor={persistor}>
             <Router>
                 <Switch>
-                    <Route path="/legal" component={LegalScreen} />
+                    {/* <Route path="/legal" component={LegalScreen} /> */}
                     <Route component={Navigation}/>
                 </Switch>
             </Router>

@@ -10,22 +10,31 @@ import colors from '../constants/colors'
 import Icon from '../components/UI/Icon'
 import { sizeNormalize } from '../constants/layout'
 import Header from '../components/header/Header'
+import { useLocation } from 'react-router-dom'
 
 const Stack = createStackNavigator()
 
-export default () =>
-    <Stack.Navigator screenOptions={headerCommonsOptions}>
-        <Stack.Screen name={MAIN} component={MainScreen}
-            options={({ navigation }) => headerOptionsMain(navigation)} />
-        <Stack.Screen name={EVENTS} component={EventsScreen}
-            options={({ navigation }) => headerOptionsMain(navigation)} />
-        <Stack.Screen name={DEEJAYS} component={DeejaysScreen}
-            options={({ navigation }) => headerOptionsMain(navigation)} />
-        <Stack.Screen name={CONTACT} component={ContactScreen}
-            options={({ navigation }) => headerOptionsMain(navigation)} />
-        <Stack.Screen name={LEGAL} component={LegalScreen}
-            options={({ navigation }) => headerOptionsMain(navigation)} />
-    </Stack.Navigator>
+export default () => {
+    let location = useLocation()
+    let namePath = location.pathname.substring(1)
+    let namePathWithUpperCaseFirstLetter = namePath.charAt(0).toUpperCase() + namePath.slice(1)
+
+    return (
+        <Stack.Navigator screenOptions={headerCommonsOptions} initialRouteName={namePathWithUpperCaseFirstLetter == ""? MAIN : namePathWithUpperCaseFirstLetter}>
+            <Stack.Screen name={MAIN} component={MainScreen}
+                options={({ navigation }) => headerOptionsMain(navigation)} />
+            <Stack.Screen name={EVENTS} component={EventsScreen}
+                options={({ navigation }) => headerOptionsMain(navigation)} />
+            <Stack.Screen name={DEEJAYS} component={DeejaysScreen}
+                options={({ navigation }) => headerOptionsMain(navigation)} />
+            <Stack.Screen name={CONTACT} component={ContactScreen}
+                options={({ navigation }) => headerOptionsMain(navigation)} />
+            <Stack.Screen name={LEGAL} component={LegalScreen}
+                options={({ navigation }) => headerOptionsMain(navigation)} />
+        </Stack.Navigator>
+    )
+}
+
 
 const headerCommonsOptions = {
     headerStyle: {
@@ -39,6 +48,7 @@ const headerCommonsOptions = {
 
 const headerOptionsMain = (navigation) => (
     {
-        headerLeft: () => <Icon color={colors.primary} onPress={navigation.toggleDrawer} name={'md-menu'} style={{marginLeft: sizeNormalize(20)}} size={30} colorHovered={colors.white}/>,
-        headerTitle: props => <Header {...props} />   }
+        headerLeft: () => <Icon color={colors.primary} onPress={navigation.toggleDrawer} name={'md-menu'} style={{ marginLeft: sizeNormalize(20) }} size={30} colorHovered={colors.white} />,
+        headerTitle: props => <Header {...props} />
+    }
 )
