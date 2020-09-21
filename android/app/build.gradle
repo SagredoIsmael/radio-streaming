@@ -138,8 +138,8 @@ android {
         applicationId 'com.citrika.fm'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
-        versionName "1.0.1"
+        versionCode 4
+        versionName "1.1.0"
     }
     splits {
         abi {
