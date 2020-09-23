@@ -12,13 +12,13 @@ const getItemsList = (blogs, publi, deejays) => {
       return orderBy(deejays, 'order', 'asc')
 
     case publi != null:
-      const publiWithBlogs = orderBy(blogs, 'order', 'asc').slice(0)
+      const publiWithBlogs = orderBy(blogs, 'date', 'desc').slice(0)
       const publiOrder = orderBy(publi, 'order', 'asc')
       publiWithBlogs.splice(0, 0, publiOrder)
       return publiWithBlogs
 
     default:
-      return orderBy(blogs, 'order', 'asc')
+      return orderBy(blogs, 'date', 'desc')
   }
 }
 
